@@ -346,26 +346,43 @@ export function Navbar({
       {/* Mobile Navigation Drawer */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/80 backdrop-blur-2xl md:hidden transition-opacity"
+          className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-2xl md:hidden transition-opacity"
           onClick={() => setMobileOpen(false)}
         >
           <div
-            className="fixed inset-y-0 right-0 w-full max-w-sm bg-[#0a0f13] border-l border-white/[0.08] p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
+            className="fixed inset-y-0 right-0 w-full max-w-sm bg-[#080d11] border-l border-white/[0.08] p-6 flex flex-col justify-between shadow-2xl overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div>
               {/* Header inside drawer */}
               <div className="flex items-center justify-between pb-6 border-b border-white/[0.08]">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-[#9ae64c] flex items-center justify-center font-bold text-[#05080a]">
-                    <Sparkles className="w-4 h-4 text-[#05080a]" />
+                <Link
+                  href="/"
+                  onClick={() => setMobileOpen(false)}
+                  aria-label="DigitalWebStudio Home"
+                  className="flex items-center focus:outline-none"
+                >
+                  <div className="relative h-10 w-48 flex items-center">
+                    <Image
+                      src={
+                        siteLogo?.url && !siteLogo.url.includes("localhost/digitalwebstudio")
+                          ? siteLogo.url
+                          : "/images/logo-icon.webp"
+                      }
+                      alt={siteLogo?.altText || "DigitalWebStudio Logo"}
+                      width={siteLogo?.width ? siteLogo.width : 220}
+                      height={siteLogo?.height ? siteLogo.height : 60}
+                      className="object-contain h-full w-auto filter drop-shadow-md"
+                      priority
+                      unoptimized
+                    />
                   </div>
-                  <span className="font-bold text-white tracking-tight">Navigation</span>
-                </div>
+                </Link>
                 <button
                   type="button"
                   onClick={() => setMobileOpen(false)}
-                  className="p-2 rounded-lg bg-white/[0.05] text-[#9cb1a6] hover:text-white"
+                  className="p-2.5 rounded-xl bg-white/[0.05] border border-white/[0.1] text-[#9cb1a6] hover:text-white hover:bg-white/[0.1] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#9ae64c]"
+                  aria-label="Close navigation menu"
                 >
                   <X className="w-5 h-5" />
                 </button>
