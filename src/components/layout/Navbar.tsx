@@ -319,7 +319,13 @@ export function Navbar({
 
               <button
                 type="button"
-                onClick={onOpenConsultation}
+                onClick={() => {
+                  if (onOpenConsultation) {
+                    onOpenConsultation();
+                  } else {
+                    window.location.href = "/contact";
+                  }
+                }}
                 className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold text-[#05080a] bg-gradient-to-r from-[#b4fa6c] via-[#9ae64c] to-[#78be32] hover:shadow-[0_0_25px_-3px_rgba(154,230,76,0.6)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
                 <span>{globalSettings?.ctaText || "Start a Project"}</span>
@@ -495,7 +501,11 @@ export function Navbar({
                 type="button"
                 onClick={() => {
                   setMobileOpen(false);
-                  if (onOpenConsultation) onOpenConsultation();
+                  if (onOpenConsultation) {
+                    onOpenConsultation();
+                  } else {
+                    window.location.href = "/contact";
+                  }
                 }}
                 className="w-full py-3.5 rounded-xl text-sm font-semibold text-[#05080a] bg-gradient-to-r from-[#b4fa6c] via-[#9ae64c] to-[#78be32] flex items-center justify-center gap-2 shadow-lg shadow-[#9ae64c]/20"
               >

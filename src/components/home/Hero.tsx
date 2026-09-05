@@ -52,6 +52,8 @@ export function Hero({ hero, benefits, onOpenConsultation }: HeroProps) {
     trackPrimaryCTA("Book a Consultation", "Hero Section");
     if (onOpenConsultation) {
       onOpenConsultation();
+    } else {
+      window.location.href = "/contact";
     }
   };
 

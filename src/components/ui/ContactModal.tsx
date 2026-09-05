@@ -24,6 +24,9 @@ export function ContactModal({
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
   useEffect(() => {
     if (initialService) {
       setFormData((prev) => ({ ...prev, service: initialService }));
@@ -37,6 +40,7 @@ export function ContactModal({
     } else {
       document.body.style.overflow = "";
       setSubmitted(false);
+      setErrorMessage("");
     }
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -49,9 +53,6 @@ export function ContactModal({
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
