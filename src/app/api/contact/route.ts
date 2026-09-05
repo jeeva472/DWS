@@ -32,6 +32,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const brevoApiKey = process.env.BREVO_API_KEY;
     const smtpHost = process.env.SMTP_HOST;
     const smtpPort = parseInt(process.env.SMTP_PORT || "587", 10);
     const smtpSecure = process.env.SMTP_SECURE === "true";
@@ -187,8 +188,36 @@ export async function POST(req: NextRequest) {
       </html>
     `;
 
-    // If SMTP credentials are configured, send the email
-    if (smtpHost && smtpUser && smtpPass) {
+    // Strategy 1: Brevo REST API (Fastest & Most Reliable via HTTPS, Zero DNS/SMTP EBUSY issues)
+    if (brevoApiKey) {
+      const brevoPayload = {
+        sender: { name: "DigitalWebStudio Inquiry", email: smtpFrom },
+        to: toEmail.map((addr) => ({ email: addr })),
+        replyTo: { name, email },
+        subject: `⚡ New Lead: [${service || "General"}] - ${name}`,
+        htmlContent: emailHtml,
+        textContent: `New lead from ${name} (${email}):\nService: ${service}\nBudget: ${budget || "N/A"}\nTimeline: ${timeline || "N/A"}\nMessage: ${message || "N/A"}\nLocation: ${formLocation}`,
+      };
+
+      const brevoRes = await fetch("https://api.brevo.com/v3/smtp/email", {
+        method: "POST",
+        headers: {
+          "accept": "application/json",
+          "api-key": brevoApiKey,
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(brevoPayload),
+      });
+
+      if (!brevoRes.ok) {
+        const errData = await brevoRes.json().catch(() => ({}));
+        throw new Error(errData.message || `Brevo API returned status ${brevoRes.status}`);
+      }
+
+      console.log(`[Brevo API] Successfully dispatched lead notification to ${toEmail.join(", ")}`);
+    }
+    // Strategy 2: Nodemailer SMTP with Timeout Protection & Auto-Retry
+    else if (smtpHost && smtpUser && smtpPass) {
       const transporter = nodemailer.createTransport({
         host: smtpHost,
         port: smtpPort,
@@ -197,21 +226,37 @@ export async function POST(req: NextRequest) {
           user: smtpUser,
           pass: smtpPass,
         },
+        connectionTimeout: 15000,
+        greetingTimeout: 15000,
+        socketTimeout: 15000,
       });
 
-      await transporter.sendMail({
+      const mailOptions = {
         from: `"DigitalWebStudio Inquiry" <${smtpFrom}>`,
         to: toEmail,
         replyTo: `"${name}" <${email}>`,
         subject: `⚡ New Lead: [${service || "General"}] - ${name}`,
         html: emailHtml,
         text: `New lead from ${name} (${email}):\nService: ${service}\nBudget: ${budget || "N/A"}\nTimeline: ${timeline || "N/A"}\nMessage: ${message || "N/A"}\nLocation: ${formLocation}`,
-      });
+      };
 
-      console.log(`[SMTP] Successfully dispatched lead notification to ${toEmail}`);
+      try {
+        await transporter.sendMail(mailOptions);
+      } catch (err: any) {
+        // If transient DNS or socket EBUSY error on local machine, retry once after 1s
+        if (err?.code === "EBUSY" || err?.code === "ETIMEDOUT" || err?.code === "EDNS" || err?.code === "ECONNRESET") {
+          console.warn(`[SMTP] Transient ${err.code} encountered, retrying dispatch in 1s...`);
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+          await transporter.sendMail(mailOptions);
+        } else {
+          throw err;
+        }
+      }
+
+      console.log(`[SMTP] Successfully dispatched lead notification to ${toEmail.join(", ")}`);
     } else {
       console.warn(
-        "[SMTP] SMTP credentials not configured (SMTP_HOST, SMTP_USER, SMTP_PASS). Submission logged."
+        "[SMTP] Neither BREVO_API_KEY nor SMTP credentials configured. Submission logged."
       );
     }
 
