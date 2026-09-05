@@ -38,7 +38,11 @@ export async function POST(req: NextRequest) {
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
     const smtpFrom = process.env.SMTP_FROM || smtpUser || "contact@digitalwebstudio.in";
-    const toEmail = process.env.CONTACT_TO_EMAIL || "contact@digitalwebstudio.in";
+    const rawToEmails = process.env.CONTACT_TO_EMAIL || "contact@digitalwebstudio.in, jeevawebstudio@gmail.com";
+    const toEmail = rawToEmails
+      .split(",")
+      .map((e) => e.trim())
+      .filter(Boolean);
 
     // Format HTML email
     const submissionTime = new Date().toLocaleString("en-US", {
