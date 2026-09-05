@@ -33,11 +33,12 @@ export async function POST(req: NextRequest) {
     }
 
     const smtpHost = process.env.SMTP_HOST;
-    const smtpPort = parseInt(process.env.SMTP_PORT || "465", 10);
-    const smtpSecure = process.env.SMTP_SECURE !== "false";
+    const smtpPort = parseInt(process.env.SMTP_PORT || "587", 10);
+    const smtpSecure = process.env.SMTP_SECURE === "true";
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
-    const toEmail = process.env.CONTACT_TO_EMAIL || smtpUser || "contact@digitalwebstudio.in";
+    const smtpFrom = process.env.SMTP_FROM || smtpUser || "contact@digitalwebstudio.in";
+    const toEmail = process.env.CONTACT_TO_EMAIL || "contact@digitalwebstudio.in";
 
     // Format HTML email
     const submissionTime = new Date().toLocaleString("en-US", {
@@ -195,7 +196,7 @@ export async function POST(req: NextRequest) {
       });
 
       await transporter.sendMail({
-        from: `"DigitalWebStudio Inquiry" <${smtpUser}>`,
+        from: `"DigitalWebStudio Inquiry" <${smtpFrom}>`,
         to: toEmail,
         replyTo: `"${name}" <${email}>`,
         subject: `⚡ New Lead: [${service || "General"}] - ${name}`,
