@@ -37,14 +37,46 @@ export function ContactClientView({ data }: ContactClientViewProps) {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    trackLeadSubmission({
-      service: formData.service,
-      timeline: formData.timeline,
-      formLocation: "Contact Page Form",
-    });
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          service: formData.service,
+          timeline: formData.timeline,
+          message: formData.message,
+          formLocation: "Contact Page Form",
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit request.");
+      }
+
+      trackLeadSubmission({
+        service: formData.service,
+        timeline: formData.timeline,
+        formLocation: "Contact Page Form",
+      });
+      setSubmitted(true);
+    } catch (err: any) {
+      setErrorMessage(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const servicesList = [
@@ -293,12 +325,19 @@ export function ContactClientView({ data }: ContactClientViewProps) {
                       />
                     </div>
 
+                    {errorMessage && (
+                      <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs text-center font-mono">
+                        {errorMessage}
+                      </div>
+                    )}
+
                     <button
                       type="submit"
-                      className="w-full py-4 rounded-full font-bold text-xs text-[#05080a] bg-gradient-to-r from-[#b4fa6c] via-[#9ae64c] to-[#78be32] hover:shadow-[0_0_25px_rgba(154,230,76,0.6)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer"
+                      disabled={isSubmitting}
+                      className="w-full py-4 rounded-full font-bold text-xs text-[#05080a] bg-gradient-to-r from-[#b4fa6c] via-[#9ae64c] to-[#78be32] hover:shadow-[0_0_25px_rgba(154,230,76,0.6)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      <span>Send Project Inquiry</span>
-                      <Send className="w-4 h-4" />
+                      <span>{isSubmitting ? "Sending Inquiry..." : "Send Project Inquiry"}</span>
+                      <Send className={`w-4 h-4 ${isSubmitting ? "animate-pulse" : ""}`} />
                     </button>
 
                     <div className="flex items-center justify-center gap-2 text-xs text-[#8c9e94] pt-2">

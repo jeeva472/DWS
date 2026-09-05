@@ -50,14 +50,46 @@ export function ContactModal({
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    trackLeadSubmission({
-      service: formData.service,
-      budget: formData.budget,
-      formLocation: "Contact Modal",
-    });
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          service: formData.service,
+          budget: formData.budget,
+          message: formData.message,
+          formLocation: "Contact Modal",
+        }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit request.");
+      }
+
+      trackLeadSubmission({
+        service: formData.service,
+        budget: formData.budget,
+        formLocation: "Contact Modal",
+      });
+      setSubmitted(true);
+    } catch (err: any) {
+      setErrorMessage(err.message || "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -196,21 +228,28 @@ export function ContactModal({
                 />
               </div>
 
-              <button
-                type="submit"
-                className="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-[#05080a] bg-gradient-to-r from-[#b4fa6c] via-[#9ae64c] to-[#78be32] hover:shadow-[0_0_25px_rgba(154,230,76,0.5)] transition-all flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <span>Request Technical Scope</span>
-                <Send className="w-3.5 h-3.5" />
-              </button>
+                {errorMessage && (
+                  <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs text-center">
+                    {errorMessage}
+                  </div>
+                )}
 
-              <div className="flex items-center justify-center gap-2 text-xs text-[#8c9e94] pt-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#9ae64c]" />
-                <span>NDA Protected • Zero spam policy</span>
-              </div>
-            </form>
-          </div>
-        )}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-[#05080a] bg-gradient-to-r from-[#b4fa6c] via-[#9ae64c] to-[#78be32] hover:shadow-[0_0_25px_rgba(154,230,76,0.5)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  <span>{isSubmitting ? "Submitting Inquiry..." : "Request Technical Scope"}</span>
+                  <Send className={`w-3.5 h-3.5 ${isSubmitting ? "animate-pulse" : ""}`} />
+                </button>
+
+                <div className="flex items-center justify-center gap-2 text-xs text-[#8c9e94] pt-1">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#9ae64c]" />
+                  <span>NDA Protected • Zero spam policy</span>
+                </div>
+              </form>
+            </div>
+          )}
       </div>
     </div>
   );
