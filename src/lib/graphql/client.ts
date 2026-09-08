@@ -27,7 +27,7 @@ import {
 
 const GRAPHQL_URL =
   process.env.NEXT_PUBLIC_WORDPRESS_GRAPHQL_URL ||
-  "https://digitalwebstudio.in/graphql";
+  "https://cms.digitalwebstudio.in/graphql";
 
 /**
  * Single source of truth for fallback header navigation menu matching WordPress.
