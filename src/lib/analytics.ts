@@ -147,3 +147,17 @@ export function trackCaseStudyView(slug: string, title?: string) {
     case_study_title: title,
   });
 }
+
+export function trackChatbotOpen() {
+  trackEvent("chatbot_open", {
+    page_location: typeof window !== "undefined" ? window.location.pathname : "/",
+  });
+}
+
+export function trackChatbotMessageSent(queryLength: number) {
+  trackEvent("chatbot_message_sent", {
+    query_length: queryLength,
+    page_location: typeof window !== "undefined" ? window.location.pathname : "/",
+  });
+}
+
