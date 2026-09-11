@@ -15,6 +15,7 @@ import {
   ExternalLink,
   ChevronDown,
 } from "lucide-react";
+import { BotAvatar } from "./BotAvatar";
 import { ChatbotLeadForm } from "./ChatbotLeadForm";
 import { trackChatbotOpen, trackChatbotMessageSent } from "@/lib/analytics";
 
@@ -45,12 +46,25 @@ const INITIAL_MESSAGE: Message = {
 
 export function ChatbotWidget() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolledPastFirstFold, setIsScrolledPastFirstFold] = useState(false);
   const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Scroll listener to only show chatbot after scrolling past the first fold
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = Math.max(window.innerHeight * 0.65, 350);
+      setIsScrolledPastFirstFold(window.scrollY > threshold);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Auto-scroll to bottom of conversation
   const scrollToBottom = () => {
@@ -205,33 +219,63 @@ export function ChatbotWidget() {
 
   return (
     <>
-      {/* Floating Launcher Trigger */}
+      {/* Floating Launcher Trigger (Only appears after scrolling past the first fold) */}
       <div className="fixed bottom-5 right-5 z-40 select-none">
         <AnimatePresence>
-          {!isOpen && (
+          {!isOpen && isScrolledPastFirstFold && (
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              className="relative group"
+              initial={{ scale: 0.8, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="relative flex items-center gap-3 group"
             >
-              {/* Tooltip on hover */}
-              <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-full bg-[#080d11]/95 border border-white/[0.1] text-[11px] font-medium text-white shadow-xl shadow-black/80 whitespace-nowrap hidden sm:flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+              {/* Interactive Floating Pill Tooltip */}
+              <motion.div
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 0.35 }}
+                onClick={() => setIsOpen(true)}
+                className="hidden sm:flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-[#08100c]/90 backdrop-blur-xl border border-[#9ae64c]/30 text-xs font-medium text-white shadow-[0_8px_32px_rgba(0,0,0,0.8)] cursor-pointer hover:border-[#9ae64c]/70 hover:shadow-[0_0_20px_rgba(154,230,76,0.25)] hover:scale-[1.03] transition-all"
+              >
                 <span className="w-2 h-2 rounded-full bg-[#9ae64c] animate-pulse" />
-                <span>Ask DWS AI Assistant</span>
-              </div>
+                <span className="text-[#e2ece7] text-[11px] font-medium tracking-wide">
+                  Ask DWS AI
+                </span>
+                <span className="px-1.5 py-0.5 rounded-full bg-[#9ae64c]/20 border border-[#9ae64c]/30 text-[#9ae64c] text-[9px] font-mono font-bold">
+                  Online
+                </span>
+              </motion.div>
 
-              {/* Launcher Button */}
+              {/* High-Tech Launcher Button */}
               <button
                 type="button"
                 onClick={() => setIsOpen(true)}
                 aria-label="Open DigitalWebStudio AI Assistant"
-                className="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-[#9ae64c] to-[#68a82b] text-[#05080a] flex items-center justify-center shadow-[0_0_30px_rgba(154,230,76,0.5)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer relative"
+                className="w-14 h-14 sm:w-15 sm:h-15 rounded-full relative flex items-center justify-center transition-all duration-300 hover:scale-108 active:scale-95 cursor-pointer group/btn"
               >
-                <div className="absolute inset-0 rounded-full bg-[#9ae64c] animate-ping opacity-25 pointer-events-none" />
-                <Bot className="w-6 h-6 sm:w-7 sm:h-7" />
-                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#05080a] border-2 border-[#9ae64c] flex items-center justify-center">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#9ae64c]" />
+                {/* Multi-layered Neon Ambient Glow */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-[#9ae64c] via-[#b4fa6c] to-[#5aa018] opacity-75 blur-md group-hover/btn:opacity-100 group-hover/btn:blur-lg transition-all duration-300 animate-pulse" />
+
+                {/* Rotating Conic Border Aura */}
+                <div className="absolute -inset-[2px] rounded-full bg-[conic-gradient(from_0deg,#9ae64c,#13281d,#9ae64c,#b4fa6c,#13281d,#9ae64c)] animate-[spin_5s_linear_infinite] opacity-70 group-hover/btn:opacity-100 transition-opacity" />
+
+                {/* Button Inner Glass Capsule */}
+                <div className="absolute inset-[2.5px] rounded-full bg-gradient-to-b from-[#14261e] via-[#091410] to-[#040907] flex items-center justify-center border border-[#9ae64c]/50 group-hover/btn:border-[#9ae64c] transition-colors shadow-inner overflow-hidden">
+                  {/* Subtle Inner Highlight Refraction */}
+                  <div className="absolute top-1 inset-x-3 h-3 rounded-full bg-white/[0.12] blur-[1px] pointer-events-none" />
+
+                  {/* Custom High-Tech Bot Avatar */}
+                  <BotAvatar
+                    size="lg"
+                    animated={true}
+                    className="transition-transform duration-300 group-hover/btn:scale-110"
+                  />
+                </div>
+
+                {/* Online Active Status Beacon */}
+                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#05080a] border-2 border-[#9ae64c] flex items-center justify-center z-10 shadow-md">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#9ae64c] animate-ping" />
                 </span>
               </button>
             </motion.div>
@@ -250,19 +294,19 @@ export function ChatbotWidget() {
             className="fixed bottom-5 right-5 z-50 w-[calc(100vw-40px)] sm:w-[410px] h-[580px] max-h-[85vh] bg-[#070b0e]/98 backdrop-blur-2xl border border-white/[0.12] rounded-3xl shadow-2xl shadow-black/90 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="p-3.5 px-4 bg-gradient-to-r from-[#0d161c] to-[#080d11] border-b border-white/[0.08] flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-[#9ae64c]/10 border border-[#9ae64c]/40 text-[#9ae64c] flex items-center justify-center">
-                  <Bot className="w-4 h-4" />
+            <div className="p-3.5 px-4 bg-gradient-to-r from-[#0d1a15] via-[#09130f] to-[#060a0d] border-b border-white/[0.08] flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-2xl bg-gradient-to-b from-[#14261e] to-[#08100c] border border-[#9ae64c]/40 text-[#9ae64c] flex items-center justify-center shadow-[0_0_15px_rgba(154,230,76,0.25)]">
+                  <BotAvatar size="md" animated={true} />
                 </div>
                 <div>
                   <div className="text-xs font-bold text-white flex items-center gap-1.5">
                     <span>DigitalWebStudio AI</span>
-                    <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-[#9ae64c]/20 text-[#9ae64c] font-mono">
+                    <span className="text-[9px] px-1.5 py-0.2 rounded-full bg-[#9ae64c]/20 text-[#9ae64c] font-mono border border-[#9ae64c]/30">
                       v1.0
                     </span>
                   </div>
-                  <div className="flex items-center gap-1 text-[10px] text-[#7d9287]">
+                  <div className="flex items-center gap-1.5 text-[10px] text-[#7d9287]">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#9ae64c] animate-pulse" />
                     <span>Domain-Grounded Assistant</span>
                   </div>
@@ -275,7 +319,7 @@ export function ChatbotWidget() {
                     type="button"
                     onClick={handleClearChat}
                     title="Reset Conversation"
-                    className="p-1.5 rounded-lg text-[#7d9287] hover:text-white hover:bg-white/[0.06] transition-colors"
+                    className="p-1.5 rounded-lg text-[#7d9287] hover:text-white hover:bg-white/[0.06] transition-colors cursor-pointer"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                   </button>
@@ -283,7 +327,7 @@ export function ChatbotWidget() {
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="p-1.5 rounded-lg text-[#7d9287] hover:text-white hover:bg-white/[0.06] transition-colors"
+                  className="p-1.5 rounded-lg text-[#7d9287] hover:text-white hover:bg-white/[0.06] transition-colors cursor-pointer"
                   aria-label="Close Chat"
                 >
                   <X className="w-4 h-4" />
@@ -301,17 +345,17 @@ export function ChatbotWidget() {
                   }`}
                 >
                   {/* Bubble Container */}
-                  <div className="flex items-start gap-2 max-w-[90%]">
+                  <div className="flex items-start gap-2.5 max-w-[90%]">
                     {msg.role === "assistant" && (
-                      <div className="w-6 h-6 rounded-full bg-[#9ae64c]/10 text-[#9ae64c] flex items-center justify-center shrink-0 mt-0.5 border border-[#9ae64c]/30">
-                        <Sparkles className="w-3 h-3" />
+                      <div className="w-6 h-6 rounded-lg bg-[#0d1a15] border border-[#9ae64c]/30 flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
+                        <BotAvatar size="sm" animated={false} />
                       </div>
                     )}
 
                     <div
                       className={`p-3 rounded-2xl ${
                         msg.role === "user"
-                          ? "bg-gradient-to-r from-[#9ae64c] to-[#7fcd32] text-[#05080a] font-medium text-xs rounded-tr-sm"
+                          ? "bg-gradient-to-r from-[#9ae64c] to-[#7fcd32] text-[#05080a] font-medium text-xs rounded-tr-sm shadow-[0_2px_10px_rgba(154,230,76,0.2)]"
                           : "bg-white/[0.04] border border-white/[0.08] text-white rounded-tl-sm shadow-md"
                       }`}
                     >
@@ -371,9 +415,9 @@ export function ChatbotWidget() {
 
               {/* Typing Indicator */}
               {isLoading && (
-                <div className="flex items-center gap-2 pl-1">
-                  <div className="w-6 h-6 rounded-full bg-[#9ae64c]/10 text-[#9ae64c] flex items-center justify-center shrink-0 border border-[#9ae64c]/30">
-                    <Sparkles className="w-3 h-3 animate-pulse" />
+                <div className="flex items-center gap-2.5 pl-1">
+                  <div className="w-6 h-6 rounded-lg bg-[#0d1a15] border border-[#9ae64c]/30 flex items-center justify-center shrink-0 shadow-sm">
+                    <BotAvatar size="sm" animated={true} />
                   </div>
                   <div className="p-2.5 rounded-2xl bg-white/[0.04] border border-white/[0.08] flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#9ae64c] animate-bounce" />
@@ -424,3 +468,4 @@ export function ChatbotWidget() {
     </>
   );
 }
+
