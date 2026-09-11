@@ -43,6 +43,9 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
+  verification: {
+    google: "R7klFh2TalHD_GjwaEEK3d4orbYzWrplVptIV8XILhU",
+  },
 };
 
 export default function RootLayout({
@@ -51,8 +54,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://digitalwebstudio.in").replace(/\/+$/, "");
-  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
-  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID || "GTM-PSSNVJDD";
+  const gaId = process.env.NEXT_PUBLIC_GA_ID || "G-HC64B1G1B6";
 
   const jsonLd = {
     "@context": "https://schema.org",
