@@ -64,7 +64,7 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
     details: [
       "Location: Coimbatore, India (working with businesses worldwide).",
       "Specialization: AI automation workflows, high-performance headless Next.js web applications, and technical SEO growth engines.",
-      "Track Record: 150+ businesses scaled, 300+ projects delivered, 5+ years of proven delivery.",
+      "Track Record: 25+ happy customers, 50+ projects delivered, 5+ years of proven delivery.",
       "Email: contact@digitalwebstudio.in | Phone / WhatsApp: +91 63830 88993.",
     ],
     links: [
