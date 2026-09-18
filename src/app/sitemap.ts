@@ -1,10 +1,13 @@
 import { MetadataRoute } from "next";
+import { getCaseStudiesPageData, FALLBACK_CASE_STUDIES_ARCHIVE_DATA } from "@/lib/graphql/client";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const revalidate = 3600; // Revalidate sitemap every hour or on-demand
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://digitalwebstudio.in").replace(/\/+$/, "");
   const now = new Date();
 
-  return [
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: now,
@@ -72,28 +75,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.85,
     },
     {
-      url: `${baseUrl}/case-studies/lead-processing-automation-system`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/case-studies/technical-seo-headless-migration`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/case-studies/rapid-mvp-vibe-code-development`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/contact`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.85,
     },
   ];
+
+  let caseStudies = FALLBACK_CASE_STUDIES_ARCHIVE_DATA.items;
+  try {
+    const data = await getCaseStudiesPageData();
+    if (data?.items && data.items.length > 0) {
+      caseStudies = data.items;
+    }
+  } catch {
+    // Fallback to static items if backend is unreachable
+  }
+
+  const caseStudyRoutes: MetadataRoute.Sitemap = caseStudies.map((item) => ({
+    url: `${baseUrl}/case-studies/${item.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly",
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...caseStudyRoutes];
 }
+
