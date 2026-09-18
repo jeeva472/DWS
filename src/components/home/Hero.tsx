@@ -149,7 +149,7 @@ export function Hero({ hero, benefits, onOpenConsultation }: HeroProps) {
         </div>
 
         {/* =================================================================== */}
-        {/* Bottom Floating Glass Stats Banner                                  */}
+        {/* Bottom Floating Glass Stats / Benefits Banner                        */}
         {/* =================================================================== */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -158,47 +158,55 @@ export function Hero({ hero, benefits, onOpenConsultation }: HeroProps) {
           className="mt-6 pt-2"
         >
           <div className="w-full rounded-2xl glass-card border border-white/[0.08] p-4 sm:p-5 shadow-2xl backdrop-blur-xl">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 divide-y md:divide-y-0 md:divide-x divide-white/[0.08]">
-              {benefits && benefits.length >= 4
-                ? benefits.slice(0, 4).map((b, idx) => (
-                    <div
-                      key={idx}
-                      className={`flex items-center gap-3.5 ${
-                        idx > 0 ? "pt-3 md:pt-0 md:pl-6" : ""
-                      }`}
-                    >
-                      <div className="w-10 h-10 rounded-xl bg-[#9ae64c]/10 border border-[#9ae64c]/20 flex items-center justify-center text-[#9ae64c] shrink-0">
-                        <IconRenderer name={b.icon} className="w-5 h-5 text-[#9ae64c]" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-white font-bold text-sm sm:text-base tracking-tight">
-                          {b.title}
-                        </span>
-                        {b.text && (
-                          <span className="text-xs text-white/50">{b.text}</span>
-                        )}
-                      </div>
+            {benefits && benefits.length > 0 ? (
+              <div
+                className={`grid grid-cols-1 sm:grid-cols-${
+                  benefits.length === 3 ? "3" : benefits.length >= 4 ? "4" : "2"
+                } gap-4 sm:gap-6 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08]`}
+              >
+                {benefits.slice(0, 4).map((b, idx) => (
+                  <div
+                    key={idx}
+                    className={`flex items-center gap-3.5 ${
+                      idx > 0 ? "pt-3 sm:pt-0 sm:pl-6" : ""
+                    }`}
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-[#9ae64c]/10 border border-[#9ae64c]/20 flex items-center justify-center text-[#9ae64c] shrink-0">
+                      <IconRenderer name={b.icon} className="w-5 h-5 text-[#9ae64c]" />
                     </div>
-                  ))
-                : defaultStats.map((s, idx) => (
-                    <div
-                      key={idx}
-                      className={`flex items-center gap-3.5 ${
-                        idx > 0 ? "pt-3 md:pt-0 md:pl-6" : ""
-                      }`}
-                    >
-                      <div className="w-10 h-10 rounded-xl bg-[#9ae64c]/10 border border-[#9ae64c]/20 flex items-center justify-center text-[#9ae64c] shrink-0">
-                        <s.icon className="w-5 h-5 text-[#9ae64c]" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-white font-bold text-base sm:text-lg tracking-tight">
-                          {s.value}
-                        </span>
-                        <span className="text-xs text-white/50">{s.label}</span>
-                      </div>
+                    <div className="flex flex-col">
+                      <span className="text-white font-bold text-sm sm:text-base tracking-tight">
+                        {b.title}
+                      </span>
+                      {b.text && (
+                        <span className="text-xs text-white/50">{b.text}</span>
+                      )}
                     </div>
-                  ))}
-            </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 divide-y md:divide-y-0 md:divide-x divide-white/[0.08]">
+                {defaultStats.map((s, idx) => (
+                  <div
+                    key={idx}
+                    className={`flex items-center gap-3.5 ${
+                      idx > 0 ? "pt-3 md:pt-0 md:pl-6" : ""
+                    }`}
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-[#9ae64c]/10 border border-[#9ae64c]/20 flex items-center justify-center text-[#9ae64c] shrink-0">
+                      <s.icon className="w-5 h-5 text-[#9ae64c]" />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-white font-bold text-base sm:text-lg tracking-tight">
+                        {s.value}
+                      </span>
+                      <span className="text-xs text-white/50">{s.label}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </motion.div>
       </div>
