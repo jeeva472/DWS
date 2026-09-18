@@ -1,5 +1,6 @@
 import {
   SiteLogo,
+  ServicesHeroData,
   FullHomepageData,
   FullAboutPageData,
   FullServicesPageData,
@@ -9,6 +10,8 @@ import {
   FullDigitalMarketingPageData,
   FullChatbotPageData,
   FullAPIIntegrationPageData,
+  FullWebDevelopmentPageData,
+  FullContactPageData,
   FullCaseStudiesArchiveData,
   FullSingleCaseStudyData,
   CaseStudyItemData,
@@ -23,7 +26,10 @@ import {
   GET_DIGITAL_MARKETING_PAGE_DATA,
   GET_CHATBOT_PAGE_DATA,
   GET_API_INTEGRATION_PAGE_DATA,
+  GET_WEB_DEVELOPMENT_PAGE_DATA,
+  GET_CONTACT_PAGE_DATA,
   GET_CASE_STUDIES_PAGE_DATA,
+  GET_SINGLE_CASE_STUDY_DATA,
 } from "./queries";
 
 const GRAPHQL_URL =
@@ -2051,7 +2057,270 @@ export async function getAPIIntegrationPageData(): Promise<FullAPIIntegrationPag
 }
 
 /* ==========================================================================
-   7. CASE STUDIES ARCHIVE & SINGLE CASE STUDY FALLBACK & GETTERS
+   7. WEB DEVELOPMENT SERVICE PAGE FALLBACK & GETTER
+   ========================================================================== */
+
+export const FALLBACK_WEB_DEVELOPMENT_PAGE_DATA: FullWebDevelopmentPageData = {
+  generalSettings: {
+    title: "digitalwebstudio",
+    description: "Modern Web Development Built for Speed, Scale & Conversion",
+    url: "https://digitalwebstudio.in",
+  },
+  siteLogo: DEFAULT_SITE_LOGO,
+  globalSettings: {
+    phone: "+91 63830 88993",
+    email: "contact@digitalwebstudio.in",
+    address: "Coimbatore, India",
+    tagline: "We build digital solutions that help businesses automate, rank and scale.",
+    ctaText: "Start a Project",
+    ctaUrl: "#contact",
+    footerDescription: "We help businesses grow and operate smarter through AI automation, SEO and modern digital systems.",
+    newsletterHeading: "Stay updated with our latest insights, news and engineering breakthroughs.",
+    copyrightText: "© {year} digitalwebstudio. All Rights Reserved.",
+  },
+  menus: FALLBACK_HEADER_MENU,
+  page: {
+    id: "web-dev-page",
+    databaseId: 107,
+    title: "Web Development",
+    slug: "web-development",
+    uri: "/services/web-development/",
+    seo: {
+      title: "Web Development & Next.js Architecture | DigitalWebStudio",
+      metaDesc: "Custom Next.js web development, headless CMS architecture, Core Web Vitals optimization, and high-performance frontend engineering.",
+      canonical: "https://digitalwebstudio.in/services/web-development/",
+      opengraphTitle: "Web Development & Next.js Architecture | DigitalWebStudio",
+      opengraphDescription: "Custom Next.js web development, headless CMS architecture, Core Web Vitals optimization, and high-performance frontend engineering.",
+      opengraphSiteName: "digitalwebstudio",
+      opengraphType: "website",
+      twitterTitle: "Web Development & Next.js Architecture | DigitalWebStudio",
+      twitterDescription: "Custom Next.js web development, headless CMS architecture, Core Web Vitals optimization, and high-performance frontend engineering.",
+    },
+    webDevelopmentPageData: {
+      hero: {
+        eyebrow: "HIGH-PERFORMANCE ARCHITECTURE • NEXT.JS & APIS",
+        title: "Modern Web Development Built for Speed, Scale & Conversion",
+        description: "We engineer custom Next.js applications, headless CMS platforms, and robust web solutions. Built with clean code, sub-second load times, and seamless API integrations that drive revenue.",
+        ctaText: "Start a Project",
+        ctaUrl: "#contact",
+      },
+      capabilities: [
+        {
+          icon: "code",
+          title: "Next.js & React Architecture",
+          description: "Server-rendered, static, and hybrid web applications engineered for sub-second speeds and SEO indexation.",
+          badge: "Full-Stack React",
+        },
+        {
+          icon: "layers",
+          title: "Headless CMS Engineering",
+          description: "Decoupled WordPress and GraphQL backends delivering effortless content editing without performance bottlenecks.",
+          badge: "WordPress + WPGraphQL",
+        },
+        {
+          icon: "zap",
+          title: "Core Web Vitals Optimization",
+          description: "Zero layout shifts (CLS 0), instant Largest Contentful Paint (LCP < 1.2s), and lightweight bundle architecture.",
+          badge: "100% Performance",
+        },
+        {
+          icon: "puzzle",
+          title: "Custom API & Webhook Pipelines",
+          description: "Type-safe API routes connecting your frontend with CRMs, payment gateways, analytics, and marketing platforms.",
+          badge: "REST & GraphQL",
+        },
+        {
+          icon: "shield-check",
+          title: "Enterprise Security & Stability",
+          description: "Strict Content Security Policies, rate limiting, automated vulnerability audits, and ISO-standard code hygiene.",
+          badge: "Zero Vulnerability",
+        },
+        {
+          icon: "sparkles",
+          title: "High-Conversion UI/UX Systems",
+          description: "Accessible, responsive design systems with smooth micro-interactions that engage visitors and boost conversion rates.",
+          badge: "Framer Motion + Tailwind",
+        },
+      ],
+      process: [
+        {
+          number: "01",
+          title: "Architecture & Discovery",
+          description: "We map user flows, data schemas, API contracts, and technology stack requirements to build a solid technical blueprint.",
+          icon: "puzzle",
+        },
+        {
+          number: "02",
+          title: "UI/UX & Component Design",
+          description: "Creating interactive wireframes and accessible Figma prototypes adhering to clean typography, spacing, and brand identity.",
+          icon: "sparkles",
+        },
+        {
+          number: "03",
+          title: "Agile Engineering & QA",
+          description: "Developing modular Next.js components with TypeScript, rigorous automated testing, and headless CMS integrations.",
+          icon: "code",
+        },
+        {
+          number: "04",
+          title: "Deployment & Optimization",
+          description: "Edge hosting setup, CDN routing, Google Analytics 4 tracking, and post-launch Core Web Vitals audits.",
+          icon: "rocket",
+        },
+      ],
+      faqs: [
+        {
+          question: "Why should we choose Next.js over traditional WordPress or monolithic themes?",
+          answer: "Next.js provides sub-second page loads, server-side rendering for optimal SEO, superior security because your backend isn't exposed to the public internet, and incredible flexibility to build custom interactive user interfaces that drive conversions.",
+        },
+        {
+          question: "Can we still use WordPress to manage our blog and pages?",
+          answer: "Yes! We specialize in headless WordPress setups where you manage content in WordPress ACF and the Gutenberg editor while our Next.js frontend renders the pages with maximum speed and zero bloated plugin overhead.",
+        },
+        {
+          question: "How do you ensure our website achieves green Core Web Vitals scores?",
+          answer: "We implement automated image optimization (Next.js Image with WebP/AVIF), strict tree shaking, code splitting, edge caching, minimal render-blocking JavaScript, and font optimization to guarantee LCP under 1.2s and 0 CLS.",
+        },
+        {
+          question: "Do you integrate custom APIs, CRMs, and payment gateways?",
+          answer: "Absolutely. We build type-safe API routes and webhook receivers connecting your website with HubSpot, Zoho, Stripe, Razorpay, Google Analytics 4, and automated email sequences.",
+        },
+        {
+          question: "What is your typical delivery timeline for a custom web build?",
+          answer: "A high-performance custom marketing website typically takes 2 to 4 weeks, while complex full-stack web applications or custom dashboards take 4 to 8 weeks depending on scope.",
+        },
+      ],
+      cta: {
+        eyebrow: "READY TO BUILD?",
+        title: "Let's build a high-performance web platform that scales with your ambition.",
+        description: "Book a technical discovery call to review architecture, timelines, and implementation strategy.",
+        buttonText: "Schedule Technical Discovery",
+        buttonUrl: "#contact",
+      },
+    },
+  },
+};
+
+export async function getWebDevelopmentPageData(): Promise<FullWebDevelopmentPageData> {
+  const data = await fetchGraphQL<FullWebDevelopmentPageData>(GET_WEB_DEVELOPMENT_PAGE_DATA, {}, 60);
+
+  if (!data || !data.page) {
+    return FALLBACK_WEB_DEVELOPMENT_PAGE_DATA;
+  }
+
+  return {
+    generalSettings: data.generalSettings || FALLBACK_WEB_DEVELOPMENT_PAGE_DATA.generalSettings,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
+    globalSettings: {
+      ...FALLBACK_WEB_DEVELOPMENT_PAGE_DATA.globalSettings!,
+      ...data.globalSettings,
+    },
+    menus: data.menus?.nodes?.length ? data.menus : FALLBACK_HEADER_MENU,
+    page: {
+      ...FALLBACK_WEB_DEVELOPMENT_PAGE_DATA.page!,
+      ...data.page,
+      seo: {
+        ...FALLBACK_WEB_DEVELOPMENT_PAGE_DATA.page?.seo,
+        ...data.page.seo,
+      },
+      webDevelopmentPageData:
+        data.page.webDevelopmentPageData || FALLBACK_WEB_DEVELOPMENT_PAGE_DATA.page?.webDevelopmentPageData!,
+    },
+  };
+}
+
+/* ==========================================================================
+   8. CONTACT PAGE FALLBACK & GETTER
+   ========================================================================== */
+
+export const FALLBACK_CONTACT_PAGE_DATA: FullContactPageData = {
+  generalSettings: {
+    title: "digitalwebstudio",
+    description: "Start a Conversation with DigitalWebStudio",
+    url: "https://digitalwebstudio.in",
+  },
+  siteLogo: DEFAULT_SITE_LOGO,
+  globalSettings: {
+    phone: "+91 63830 88993",
+    email: "contact@digitalwebstudio.in",
+    address: "Coimbatore, India",
+    tagline: "We build digital solutions that help businesses automate, rank and scale.",
+    ctaText: "Start a Project",
+    ctaUrl: "#contact",
+    footerDescription: "We help businesses grow and operate smarter through AI automation, SEO and modern digital systems.",
+    newsletterHeading: "Stay updated with our latest insights, news and engineering breakthroughs.",
+    copyrightText: "© {year} digitalwebstudio. All Rights Reserved.",
+  },
+  menus: FALLBACK_HEADER_MENU,
+  page: {
+    id: "contact-page",
+    databaseId: 28,
+    title: "Contact",
+    slug: "contact",
+    uri: "/contact/",
+    seo: {
+      title: "Contact Us | Technical Strategy Consultation | DigitalWebStudio",
+      metaDesc: "Get in touch with DigitalWebStudio for AI automation, SEO strategy, custom Next.js web development, and digital growth consulting.",
+      canonical: "https://digitalwebstudio.in/contact/",
+      opengraphTitle: "Contact Us | Technical Strategy Consultation | DigitalWebStudio",
+      opengraphDescription: "Get in touch with DigitalWebStudio for AI automation, SEO strategy, custom Next.js web development, and digital growth consulting.",
+      opengraphSiteName: "digitalwebstudio",
+      opengraphType: "website",
+      twitterTitle: "Contact Us | Technical Strategy Consultation | DigitalWebStudio",
+      twitterDescription: "Get in touch with DigitalWebStudio for AI automation, SEO strategy, custom Next.js web development, and digital growth consulting.",
+    },
+    contactPageData: {
+      hero: {
+        eyebrow: "START A CONVERSATION",
+        heading: "Let's Build, Automate &",
+        headingHighlight: "Scale Your Business",
+        headingTag: "h1",
+        description: "Have a project in mind or want to explore how AI automation, modern SEO, and custom development can transform your operations? Get in touch for a senior technical consultation.",
+      },
+      directInfo: {
+        email: "contact@digitalwebstudio.in",
+        phone: "+91 63830 88993",
+        sla: "Under 2 Hours (Mon - Sat)",
+      },
+      form: {
+        heading: "Tell Us About Your Project",
+        subheading: "Fill out the details below and we'll schedule a structured technical discovery call.",
+        cf7_form_id: 7,
+      },
+    },
+  },
+};
+
+export async function getContactPageData(): Promise<FullContactPageData> {
+  const data = await fetchGraphQL<FullContactPageData>(GET_CONTACT_PAGE_DATA, {}, 60);
+
+  if (!data || !data.page) {
+    return FALLBACK_CONTACT_PAGE_DATA;
+  }
+
+  return {
+    generalSettings: data.generalSettings || FALLBACK_CONTACT_PAGE_DATA.generalSettings,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
+    globalSettings: {
+      ...FALLBACK_CONTACT_PAGE_DATA.globalSettings!,
+      ...data.globalSettings,
+    },
+    menus: data.menus?.nodes?.length ? data.menus : FALLBACK_HEADER_MENU,
+    page: {
+      ...FALLBACK_CONTACT_PAGE_DATA.page!,
+      ...data.page,
+      seo: {
+        ...FALLBACK_CONTACT_PAGE_DATA.page?.seo,
+        ...data.page.seo,
+      },
+      contactPageData:
+        data.page.contactPageData || FALLBACK_CONTACT_PAGE_DATA.page?.contactPageData!,
+    },
+  };
+}
+
+/* ==========================================================================
+   9. CASE STUDIES ARCHIVE & SINGLE CASE STUDY FALLBACK & GETTERS
    ========================================================================== */
 
 export const FALLBACK_CASE_STUDIES_ARCHIVE_DATA: FullCaseStudiesArchiveData = {
@@ -2155,12 +2424,31 @@ export const FALLBACK_CASE_STUDIES_ARCHIVE_DATA: FullCaseStudiesArchiveData = {
   ],
 };
 
+interface CaseStudiesGraphQLResponse {
+  generalSettings?: any;
+  siteLogo?: SiteLogo;
+  globalSettings?: any;
+  menus?: any;
+  page?: any;
+  caseStudiesArchiveData?: {
+    hero?: ServicesHeroData;
+    items?: CaseStudyItemData[];
+  };
+}
+
 export async function getCaseStudiesPageData(): Promise<FullCaseStudiesArchiveData> {
-  const data = await fetchGraphQL<FullCaseStudiesArchiveData>(GET_CASE_STUDIES_PAGE_DATA, {}, 60);
+  const data = await fetchGraphQL<CaseStudiesGraphQLResponse>(GET_CASE_STUDIES_PAGE_DATA, {}, 60);
 
   if (!data) {
     return FALLBACK_CASE_STUDIES_ARCHIVE_DATA;
   }
+
+  const items =
+    data.caseStudiesArchiveData?.items && data.caseStudiesArchiveData.items.length > 0
+      ? data.caseStudiesArchiveData.items
+      : FALLBACK_CASE_STUDIES_ARCHIVE_DATA.items;
+
+  const hero = data.caseStudiesArchiveData?.hero || FALLBACK_CASE_STUDIES_ARCHIVE_DATA.hero;
 
   return {
     generalSettings: data.generalSettings || FALLBACK_CASE_STUDIES_ARCHIVE_DATA.generalSettings,
@@ -2170,12 +2458,36 @@ export async function getCaseStudiesPageData(): Promise<FullCaseStudiesArchiveDa
       ...data.globalSettings,
     },
     menus: data.menus?.nodes?.length ? data.menus : FALLBACK_HEADER_MENU,
-    hero: FALLBACK_CASE_STUDIES_ARCHIVE_DATA.hero,
-    items: FALLBACK_CASE_STUDIES_ARCHIVE_DATA.items,
+    hero,
+    items,
   };
 }
 
+interface SingleCaseStudyGraphQLResponse {
+  generalSettings?: any;
+  siteLogo?: SiteLogo;
+  globalSettings?: any;
+  menus?: any;
+  singleCaseStudy?: CaseStudyItemData;
+}
+
 export async function getSingleCaseStudyData(slug: string): Promise<FullSingleCaseStudyData | null> {
+  const data = await fetchGraphQL<SingleCaseStudyGraphQLResponse>(GET_SINGLE_CASE_STUDY_DATA, { slug }, 60);
+
+  if (data?.singleCaseStudy) {
+    return {
+      generalSettings: data.generalSettings || FALLBACK_CASE_STUDIES_ARCHIVE_DATA.generalSettings,
+      siteLogo: sanitizeSiteLogo(data.siteLogo),
+      globalSettings: {
+        ...FALLBACK_CASE_STUDIES_ARCHIVE_DATA.globalSettings!,
+        ...data.globalSettings,
+      },
+      menus: data.menus?.nodes?.length ? data.menus : FALLBACK_HEADER_MENU,
+      caseStudy: data.singleCaseStudy,
+    };
+  }
+
+  // Fallback to archive search
   const archive = await getCaseStudiesPageData();
   const found = archive.items.find((item) => item.slug === slug);
 

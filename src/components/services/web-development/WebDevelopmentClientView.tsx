@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { FullHomepageData } from "@/lib/types/wordpress";
+import { FullWebDevelopmentPageData, FullHomepageData } from "@/lib/types/wordpress";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ContactModal } from "@/components/ui/ContactModal";
@@ -14,7 +14,7 @@ import { WebDevelopmentProcess } from "./WebDevelopmentProcess";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 interface WebDevelopmentClientViewProps {
-  data: FullHomepageData;
+  data: FullWebDevelopmentPageData | FullHomepageData;
 }
 
 const WEB_DEV_FAQS = [

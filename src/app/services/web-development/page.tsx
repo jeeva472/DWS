@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { getHomepageData } from "@/lib/graphql/client";
+import { getWebDevelopmentPageData } from "@/lib/graphql/client";
 import { WebDevelopmentClientView } from "@/components/services/web-development/WebDevelopmentClientView";
 
 export const revalidate = 60; // Next.js ISR: Revalidate every 60s or on-demand
@@ -16,16 +16,18 @@ function normalizeToFrontendUrl(url?: string, fallbackPath = "/services/web-deve
  * Dynamic SEO metadata for Web Development Services
  */
 export async function generateMetadata(): Promise<Metadata> {
-  const data = await getHomepageData();
+  const data = await getWebDevelopmentPageData();
   const siteTitle = data.generalSettings?.title || "DigitalWebStudio";
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://digitalwebstudio.in").replace(/\/+$/, "");
+  const seo = data.page?.seo;
 
-  const title = `Web Development & Next.js Architecture | ${siteTitle}`;
+  const title = seo?.title || `Web Development & Next.js Architecture | ${siteTitle}`;
   const description =
+    seo?.metaDesc ||
     "Custom Next.js web development, headless CMS architecture, Core Web Vitals optimization, and high-performance frontend engineering.";
 
-  const ogImage = `${siteUrl}/images/web-development-team-engineering.webp`;
-  const canonical = normalizeToFrontendUrl(undefined, "/services/web-development");
+  const ogImage = seo?.opengraphImage || `${siteUrl}/images/web-development-team-engineering.webp`;
+  const canonical = seo?.canonical ? normalizeToFrontendUrl(seo.canonical, "/services/web-development") : normalizeToFrontendUrl(undefined, "/services/web-development");
 
   return {
     title: {
@@ -36,8 +38,8 @@ export async function generateMetadata(): Promise<Metadata> {
       canonical,
     },
     openGraph: {
-      title,
-      description,
+      title: seo?.opengraphTitle || title,
+      description: seo?.opengraphDescription || description,
       url: canonical,
       siteName: siteTitle,
       images: [
@@ -52,18 +54,18 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
-      images: [ogImage],
+      title: seo?.twitterTitle || title,
+      description: seo?.twitterDescription || description,
+      images: [seo?.twitterImage || ogImage],
     },
     robots: {
-      index: true,
-      follow: true,
+      index: seo?.metaRobotsNoindex !== "noindex",
+      follow: seo?.metaRobotsNofollow !== "nofollow",
     },
   };
 }
 
 export default async function WebDevelopmentPage() {
-  const data = await getHomepageData();
+  const data = await getWebDevelopmentPageData();
   return <WebDevelopmentClientView data={data} />;
 }

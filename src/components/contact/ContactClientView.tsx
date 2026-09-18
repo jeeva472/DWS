@@ -15,7 +15,7 @@ import {
   ShieldCheck,
   Zap,
 } from "lucide-react";
-import { FullHomepageData } from "@/lib/types/wordpress";
+import { FullContactPageData, FullHomepageData } from "@/lib/types/wordpress";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -23,7 +23,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { trackLeadSubmission, trackPhoneClick, trackEmailClick } from "@/lib/analytics";
 
 interface ContactClientViewProps {
-  data: FullHomepageData;
+  data: FullContactPageData | FullHomepageData;
 }
 
 export function ContactClientView({ data }: ContactClientViewProps) {
@@ -39,6 +39,27 @@ export function ContactClientView({ data }: ContactClientViewProps) {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const contactData = (data.page as any)?.contactPageData;
+  const hero = contactData?.hero || {
+    eyebrow: "START A CONVERSATION",
+    heading: "Let's Build, Automate &",
+    headingHighlight: "Scale Your Business",
+    headingTag: "h1",
+    description: "Have a project in mind or want to explore how AI automation, modern SEO, and custom development can transform your operations? Get in touch for a senior technical consultation.",
+  };
+
+  const directInfo = contactData?.directInfo || {
+    email: "contact@digitalwebstudio.in",
+    phone: "+91 63830 88993",
+    sla: "Under 2 Hours (Mon - Sat)",
+  };
+
+  const formSettings = contactData?.form || {
+    heading: "Project Scope & Inquiry",
+    subheading: "Fill out the details below and we'll schedule a structured technical discovery call.",
+    cf7_form_id: 7,
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -120,14 +141,16 @@ export function ContactClientView({ data }: ContactClientViewProps) {
               <div>
                 <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] text-xs font-mono font-semibold tracking-wider text-[#9ae64c] uppercase mb-4">
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>START A CONVERSATION</span>
+                  <span>{hero.eyebrow}</span>
                 </div>
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-[1.15] mb-5">
-                  Let&apos;s Build, Automate &amp;{" "}
-                  <span className="text-[#9ae64c]">Scale Your Business</span>
+                  {hero.heading}{" "}
+                  {hero.headingHighlight && (
+                    <span className="text-[#9ae64c]">{hero.headingHighlight}</span>
+                  )}
                 </h1>
                 <p className="text-base text-[#9cb1a6] leading-relaxed">
-                  Have a project in mind or want to explore how AI automation, modern SEO, and custom development can transform your operations? Get in touch for a senior technical consultation.
+                  {hero.description}
                 </p>
               </div>
 
@@ -142,11 +165,11 @@ export function ContactClientView({ data }: ContactClientViewProps) {
                       Direct Email
                     </div>
                     <a
-                      href="mailto:contact@digitalwebstudio.in"
-                      onClick={() => trackEmailClick("contact@digitalwebstudio.in")}
+                      href={`mailto:${directInfo.email}`}
+                      onClick={() => trackEmailClick(directInfo.email)}
                       className="text-sm font-bold text-white hover:text-[#9ae64c] transition-colors mt-0.5 block"
                     >
-                      contact@digitalwebstudio.in
+                      {directInfo.email}
                     </a>
                   </div>
                 </div>
@@ -160,11 +183,11 @@ export function ContactClientView({ data }: ContactClientViewProps) {
                       Phone / WhatsApp
                     </div>
                     <a
-                      href="tel:+916383088993"
-                      onClick={() => trackPhoneClick("+916383088993")}
+                      href={`tel:${directInfo.phone.replace(/[^+\d]/g, '')}`}
+                      onClick={() => trackPhoneClick(directInfo.phone)}
                       className="text-sm font-bold text-white hover:text-[#9ae64c] transition-colors mt-0.5 block"
                     >
-                      +91 63830 88993
+                      {directInfo.phone}
                     </a>
                   </div>
                 </div>
@@ -178,7 +201,7 @@ export function ContactClientView({ data }: ContactClientViewProps) {
                       Guaranteed Response SLA
                     </div>
                     <div className="text-sm font-bold text-white mt-0.5">
-                      Under 2 Hours (Mon - Sat)
+                      {directInfo.sla}
                     </div>
                   </div>
                 </div>
@@ -237,10 +260,10 @@ export function ContactClientView({ data }: ContactClientViewProps) {
                   <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                     <div>
                       <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
-                        Project Scope &amp; Inquiry
+                        {formSettings.heading}
                       </h2>
                       <p className="text-xs sm:text-sm text-[#8c9e94]">
-                        Fill out the details below and we&apos;ll schedule a structured technical discovery call.
+                        {formSettings.subheading}
                       </p>
                     </div>
 

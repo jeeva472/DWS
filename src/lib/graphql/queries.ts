@@ -950,6 +950,215 @@ query GetAPIIntegrationPageData {
 `;
 
 /**
+ * Web Development Service Page Full Query
+ */
+export const GET_WEB_DEVELOPMENT_PAGE_DATA = `
+query GetWebDevelopmentPageData {
+  generalSettings {
+    title
+    description
+    url
+  }
+  siteLogo {
+    id
+    url
+    altText
+    width
+    height
+    title
+  }
+  globalSettings {
+    phone
+    email
+    address
+    tagline
+    ctaText
+    ctaUrl
+    footerDescription
+    newsletterHeading
+    copyrightText
+    privacyPolicyUrl
+    termsServiceUrl
+    social {
+      facebook
+      linkedin
+      instagram
+      youtube
+      twitter
+    }
+  }
+  menus {
+    nodes {
+      id
+      name
+      slug
+      menuItems {
+        nodes {
+          id
+          label
+          url
+          path
+        }
+      }
+    }
+  }
+  page(id: "web-development", idType: URI) {
+    id
+    databaseId
+    title
+    slug
+    uri
+    seo {
+      title
+      metaDesc
+      canonical
+      opengraphTitle
+      opengraphDescription
+      opengraphImage
+      opengraphUrl
+      opengraphSiteName
+      opengraphType
+      twitterTitle
+      twitterDescription
+      twitterImage
+      metaRobotsNoindex
+      metaRobotsNofollow
+    }
+    webDevelopmentPageData {
+      hero {
+        eyebrow
+        title
+        description
+        ctaText
+        ctaUrl
+      }
+      capabilities {
+        icon
+        title
+        description
+        badge
+      }
+      process {
+        number
+        title
+        description
+        icon
+      }
+      faqs {
+        question
+        answer
+      }
+      cta {
+        eyebrow
+        title
+        description
+        buttonText
+        buttonUrl
+      }
+    }
+  }
+}
+`;
+
+/**
+ * Contact Page Full Query
+ */
+export const GET_CONTACT_PAGE_DATA = `
+query GetContactPageData {
+  generalSettings {
+    title
+    description
+    url
+  }
+  siteLogo {
+    id
+    url
+    altText
+    width
+    height
+    title
+  }
+  globalSettings {
+    phone
+    email
+    address
+    tagline
+    ctaText
+    ctaUrl
+    footerDescription
+    newsletterHeading
+    copyrightText
+    privacyPolicyUrl
+    termsServiceUrl
+    social {
+      facebook
+      linkedin
+      instagram
+      youtube
+      twitter
+    }
+  }
+  menus {
+    nodes {
+      id
+      name
+      slug
+      menuItems {
+        nodes {
+          id
+          label
+          url
+          path
+        }
+      }
+    }
+  }
+  page(id: "contact", idType: URI) {
+    id
+    databaseId
+    title
+    slug
+    uri
+    seo {
+      title
+      metaDesc
+      canonical
+      opengraphTitle
+      opengraphDescription
+      opengraphImage
+      opengraphUrl
+      opengraphSiteName
+      opengraphType
+      twitterTitle
+      twitterDescription
+      twitterImage
+      metaRobotsNoindex
+      metaRobotsNofollow
+    }
+    contactPageData {
+      hero {
+        eyebrow
+        heading
+        headingHighlight
+        headingTag
+        description
+      }
+      directInfo {
+        email
+        phone
+        sla
+      }
+      form {
+        heading
+        subheading
+        cf7_form_id
+      }
+    }
+  }
+}
+`;
+
+/**
  * Case Studies Archive Query
  */
 export const GET_CASE_STUDIES_PAGE_DATA = `
@@ -1001,6 +1210,132 @@ query GetCaseStudiesPageData {
         }
       }
     }
+  }
+  page(id: "case-studies", idType: URI) {
+    id
+    databaseId
+    title
+    slug
+    uri
+    seo {
+      title
+      metaDesc
+      canonical
+      opengraphTitle
+      opengraphDescription
+      opengraphImage
+      opengraphUrl
+      opengraphSiteName
+      opengraphType
+      twitterTitle
+      twitterDescription
+      twitterImage
+      metaRobotsNoindex
+      metaRobotsNofollow
+    }
+  }
+  caseStudiesArchiveData {
+    hero {
+      eyebrow
+      title
+      description
+      ctaText
+      ctaUrl
+    }
+    items {
+      id
+      slug
+      title
+      category
+      categorySlug
+      clientName
+      industry
+      summary
+      servicesRendered
+      technologies
+      challenge
+      approach
+      implementation
+      results
+      lessons
+      imageUrl
+      imageAlt
+    }
+  }
+}
+`;
+
+/**
+ * Single Case Study Query by Slug
+ */
+export const GET_SINGLE_CASE_STUDY_DATA = `
+query GetSingleCaseStudyData($slug: String!) {
+  generalSettings {
+    title
+    description
+    url
+  }
+  siteLogo {
+    id
+    url
+    altText
+    width
+    height
+    title
+  }
+  globalSettings {
+    phone
+    email
+    address
+    tagline
+    ctaText
+    ctaUrl
+    footerDescription
+    newsletterHeading
+    copyrightText
+    privacyPolicyUrl
+    termsServiceUrl
+    social {
+      facebook
+      linkedin
+      instagram
+      youtube
+      twitter
+    }
+  }
+  menus {
+    nodes {
+      id
+      name
+      slug
+      menuItems {
+        nodes {
+          id
+          label
+          url
+          path
+        }
+      }
+    }
+  }
+  singleCaseStudy(slug: $slug) {
+    id
+    slug
+    title
+    category
+    categorySlug
+    clientName
+    industry
+    summary
+    servicesRendered
+    technologies
+    challenge
+    approach
+    implementation
+    results
+    lessons
+    imageUrl
+    imageAlt
   }
 }
 `;

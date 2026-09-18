@@ -311,6 +311,8 @@ export interface PageNode {
   homepageData?: HomepageACFData;
   aboutPageData?: AboutPageACFData;
   servicesPageData?: ServicesPageACFData;
+  webDevelopmentPageData?: WebDevelopmentPageData;
+  contactPageData?: ContactPageData;
 }
 
 export interface FullHomepageData {
@@ -612,6 +614,75 @@ export interface FullAPIIntegrationPageData {
   };
   page?: PageNode & {
     apiIntegrationPageData?: APIIntegrationPageData;
+  };
+}
+
+export interface WebDevCapability {
+  icon?: string;
+  title: string;
+  description: string;
+  badge?: string;
+}
+
+export interface WebDevProcessStep {
+  number: string;
+  title: string;
+  description: string;
+  icon?: string;
+}
+
+export interface WebDevFAQ {
+  question: string;
+  answer: string;
+}
+
+export interface WebDevelopmentPageData {
+  hero: ServicesHeroData;
+  capabilities: WebDevCapability[];
+  process: WebDevProcessStep[];
+  faqs: WebDevFAQ[];
+  cta: ServicesCTAData;
+}
+
+export interface FullWebDevelopmentPageData {
+  generalSettings?: GeneralSettings;
+  siteLogo?: SiteLogo;
+  globalSettings?: GlobalSettings;
+  menus?: {
+    nodes: MenuNode[];
+  };
+  page?: PageNode & {
+    webDevelopmentPageData?: WebDevelopmentPageData;
+  };
+}
+
+export interface ContactDirectInfo {
+  email: string;
+  phone: string;
+  sla: string;
+}
+
+export interface ContactFormSettings {
+  heading: string;
+  subheading: string;
+  cf7_form_id: number;
+}
+
+export interface ContactPageData {
+  hero: HeroSectionData;
+  directInfo: ContactDirectInfo;
+  form: ContactFormSettings;
+}
+
+export interface FullContactPageData {
+  generalSettings?: GeneralSettings;
+  siteLogo?: SiteLogo;
+  globalSettings?: GlobalSettings;
+  menus?: {
+    nodes: MenuNode[];
+  };
+  page?: PageNode & {
+    contactPageData?: ContactPageData;
   };
 }
 
