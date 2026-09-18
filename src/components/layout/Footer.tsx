@@ -37,13 +37,16 @@ export function Footer({ siteLogo, globalSettings }: FooterProps) {
               <div className="relative h-12 w-[270px] flex items-center">
                 <Image
                   src={
-                    siteLogo?.url && !siteLogo.url.includes("localhost/digitalwebstudio")
+                    siteLogo?.url &&
+                    !siteLogo.url.includes("localhost") &&
+                    !siteLogo.url.includes("127.0.0.1") &&
+                    siteLogo.url.startsWith("http")
                       ? siteLogo.url
-                      : "/images/logo-icon.webp"
+                      : "/images/digitalwebstudio-logo.webp"
                   }
                   alt={siteLogo?.altText || "DigitalWebStudio Logo"}
-                  width={siteLogo?.width ? siteLogo.width + 50 : 270}
-                  height={siteLogo?.height ? siteLogo.height + 15 : 75}
+                  width={siteLogo?.width || 1471}
+                  height={siteLogo?.height || 355}
                   className="object-contain h-full w-auto"
                   unoptimized
                 />

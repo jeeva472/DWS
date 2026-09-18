@@ -38,6 +38,15 @@ function TechLogo({ name }: { name: string }) {
     );
   }
 
+  if (normalized.includes("typescript") || normalized === "ts") {
+    return (
+      <svg viewBox="0 0 32 32" className="w-6 h-6" fill="none">
+        <rect width="32" height="32" rx="4" fill="#3178c6" fillOpacity="0.2" stroke="#3178c6" strokeWidth="1.5" />
+        <path d="M12 11H20M16 11V23M21 21C22 22.5 24 23 25.5 22C27 21 27 19.5 25.5 18.5C24 17.5 22 17 22 15C22 13.5 23 12.5 24.5 12.5C26 12.5 27 13.5 27.5 14.5" stroke="#3178c6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
   if (normalized.includes("node")) {
     return (
       <svg viewBox="0 0 32 32" className="w-6 h-6" fill="none">
@@ -62,6 +71,24 @@ function TechLogo({ name }: { name: string }) {
       <svg viewBox="0 0 40 40" className="w-6 h-6" fill="none">
         <path d="M8 12L20 5L32 12V28L20 35L8 28V12Z" stroke="#8b5cf6" strokeWidth="2" fill="#6d28d9" fillOpacity="0.2" />
         <path d="M14 24L20 14L26 24" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  if (normalized.includes("tailwind")) {
+    return (
+      <svg viewBox="0 0 32 32" className="w-6 h-6" fill="none">
+        <path d="M9 13.5C10.5 10.5 13 9.5 16.5 10.5C14.5 12.5 14.5 14 16.5 15.5C18.5 17 19.5 18.5 17.5 21.5C16 22.5 14 22.5 12.5 21.5C11 20.5 10.5 19 12 17C10.5 16.5 9.5 15 9 13.5Z" fill="#38bdf8" />
+        <path d="M16 8C17.5 5 20 4 23.5 5C21.5 7 21.5 8.5 23.5 10C25.5 11.5 26.5 13 24.5 16C23 17 21 17 19.5 16C18 15 17.5 13.5 19 11.5C17.5 11 16.5 9.5 16 8Z" fill="#38bdf8" fillOpacity="0.7" />
+      </svg>
+    );
+  }
+
+  if (normalized.includes("python")) {
+    return (
+      <svg viewBox="0 0 32 32" className="w-6 h-6" fill="none">
+        <path d="M15.5 4C10.5 4 11 6.5 11 6.5L11 9H16V10H9C6.5 10 4 12 4 16C4 20 6 20 6 20H8V17.5C8 15 10 15 10 15H15C17.5 15 18 13 18 13V6.5C18 4.5 16 4 15.5 4Z" fill="#387eb8" />
+        <path d="M16.5 28C21.5 28 21 25.5 21 25.5L21 23H16V22H23C25.5 22 28 20 28 16C28 12 26 12 26 12H24V14.5C24 17 22 17 22 17H17C14.5 17 14 19 14 19V25.5C14 27.5 16 28 16.5 28Z" fill="#ffe052" />
       </svg>
     );
   }
@@ -94,12 +121,21 @@ function TechLogo({ name }: { name: string }) {
     );
   }
 
-  // WordPress default
+  if (normalized.includes("wordpress") || normalized === "wp") {
+    return (
+      <svg viewBox="0 0 32 32" className="w-6 h-6" fill="none">
+        <circle cx="16" cy="16" r="13" stroke="#21759b" strokeWidth="1.8" fill="#21759b" fillOpacity="0.15" />
+        <path d="M7 16C7 11 11 7 16 7C21 7 25 11 25 16" stroke="#21759b" strokeWidth="1.2" />
+        <path d="M10 12L13.5 22L16 15L18.5 22L22 12" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    );
+  }
+
+  // Modern Universal Tech Vector Mark
   return (
     <svg viewBox="0 0 32 32" className="w-6 h-6" fill="none">
-      <circle cx="16" cy="16" r="13" stroke="#21759b" strokeWidth="1.8" fill="#21759b" fillOpacity="0.15" />
-      <path d="M7 16C7 11 11 7 16 7C21 7 25 11 25 16" stroke="#21759b" strokeWidth="1.2" />
-      <path d="M10 12L13.5 22L16 15L18.5 22L22 12" stroke="#ffffff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <rect x="4" y="4" width="24" height="24" rx="6" stroke="#9ae64c" strokeWidth="1.5" fill="#9ae64c" fillOpacity="0.1" />
+      <path d="M11 16L14 19L21 12" stroke="#9ae64c" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

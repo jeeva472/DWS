@@ -1,4 +1,5 @@
 import {
+  SiteLogo,
   FullHomepageData,
   FullAboutPageData,
   FullServicesPageData,
@@ -49,6 +50,42 @@ export const FALLBACK_HEADER_MENU = {
   ],
 };
 
+export const DEFAULT_SITE_LOGO: SiteLogo = {
+  id: 8,
+  url: "/images/digitalwebstudio-logo.webp",
+  altText: "DigitalWebStudio Logo",
+  width: 1471,
+  height: 355,
+  title: "DigitalWebStudio Logo",
+};
+
+/**
+ * Ensures siteLogo returned from WordPress or fallbacks has a valid reachable URL
+ * and never falls back to broken localhost paths or missing icon assets.
+ */
+export function sanitizeSiteLogo(logo?: SiteLogo | null): SiteLogo {
+  if (!logo || !logo.url) {
+    return DEFAULT_SITE_LOGO;
+  }
+  const url = logo.url.trim();
+  if (
+    url.includes("localhost") ||
+    url.includes("127.0.0.1") ||
+    url.includes("::1") ||
+    !url.startsWith("http")
+  ) {
+    return DEFAULT_SITE_LOGO;
+  }
+  return {
+    id: logo.id || DEFAULT_SITE_LOGO.id,
+    url: url,
+    altText: logo.altText || DEFAULT_SITE_LOGO.altText,
+    width: logo.width || DEFAULT_SITE_LOGO.width,
+    height: logo.height || DEFAULT_SITE_LOGO.height,
+    title: logo.title || DEFAULT_SITE_LOGO.title,
+  };
+}
+
 /**
  * Fallback static dataset matching existing WordPress/ACF database state,
  * used when WordPress is offline or during build environments.
@@ -59,14 +96,7 @@ export const FALLBACK_HOMEPAGE_DATA: FullHomepageData = {
     description: "AI Automation, SEO & Digital Growth Solutions",
     url: "https://digitalwebstudio.in",
   },
-  siteLogo: {
-    id: 8,
-    url: "/images/logo-icon.webp",
-    altText: "DigitalWebStudio",
-    width: 220,
-    height: 60,
-    title: "DigitalWebStudio Logo",
-  },
+  siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
     email: "contact@digitalwebstudio.in",
@@ -408,7 +438,7 @@ export async function getHomepageData(): Promise<FullHomepageData> {
   // Deep merge with fallback values to ensure zero undefined rendering
   const merged: FullHomepageData = {
     generalSettings: data.generalSettings || FALLBACK_HOMEPAGE_DATA.generalSettings,
-    siteLogo: data.siteLogo || FALLBACK_HOMEPAGE_DATA.siteLogo,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
     globalSettings: {
       ...FALLBACK_HOMEPAGE_DATA.globalSettings!,
       ...data.globalSettings,
@@ -484,14 +514,7 @@ export const FALLBACK_ABOUT_PAGE_DATA: FullAboutPageData = {
     description: "Web Development, AI Automation & Digital Marketing Solutions",
     url: "https://digitalwebstudio.in",
   },
-  siteLogo: {
-    id: 8,
-    url: "/images/logo-icon.webp",
-    altText: "DigitalWebStudio",
-    width: 220,
-    height: 60,
-    title: "DigitalWebStudio Logo",
-  },
+  siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
     email: "contact@digitalwebstudio.in",
@@ -695,7 +718,7 @@ export async function getAboutPageData(): Promise<FullAboutPageData> {
 
   const merged: FullAboutPageData = {
     generalSettings: data.generalSettings || FALLBACK_ABOUT_PAGE_DATA.generalSettings,
-    siteLogo: data.siteLogo || FALLBACK_ABOUT_PAGE_DATA.siteLogo,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
     globalSettings: {
       ...FALLBACK_ABOUT_PAGE_DATA.globalSettings!,
       ...data.globalSettings,
@@ -779,14 +802,7 @@ export const FALLBACK_SERVICES_PAGE_DATA: FullServicesPageData = {
     description: "AI Automation, SEO & Digital Growth Solutions",
     url: "https://digitalwebstudio.in",
   },
-  siteLogo: {
-    id: 8,
-    url: "/images/logo-icon.webp",
-    altText: "DigitalWebStudio",
-    width: 220,
-    height: 60,
-    title: "DigitalWebStudio Logo",
-  },
+  siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
     email: "contact@digitalwebstudio.in",
@@ -1072,9 +1088,7 @@ export async function getServicesPageData(): Promise<FullServicesPageData> {
       ...FALLBACK_SERVICES_PAGE_DATA.generalSettings!,
       ...data.generalSettings,
     },
-    siteLogo: data.siteLogo?.url
-      ? data.siteLogo
-      : FALLBACK_SERVICES_PAGE_DATA.siteLogo,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
     globalSettings: {
       ...FALLBACK_SERVICES_PAGE_DATA.globalSettings!,
       ...data.globalSettings,
@@ -1143,14 +1157,7 @@ export const FALLBACK_AI_AUTOMATION_PAGE_DATA: FullAIAutomationPageData = {
     description: "AI Automation for Smarter, More Efficient Businesses",
     url: "https://digitalwebstudio.in",
   },
-  siteLogo: {
-    id: 8,
-    url: "/images/logo-icon.webp",
-    altText: "DigitalWebStudio",
-    width: 220,
-    height: 60,
-    title: "DigitalWebStudio Logo",
-  },
+  siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
     email: "contact@digitalwebstudio.in",
@@ -1310,7 +1317,7 @@ export async function getAIAutomationPageData(): Promise<FullAIAutomationPageDat
 
   return {
     generalSettings: data.generalSettings || FALLBACK_AI_AUTOMATION_PAGE_DATA.generalSettings,
-    siteLogo: data.siteLogo || FALLBACK_AI_AUTOMATION_PAGE_DATA.siteLogo,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
     globalSettings: {
       ...FALLBACK_AI_AUTOMATION_PAGE_DATA.globalSettings!,
       ...data.globalSettings,
@@ -1338,14 +1345,7 @@ export const FALLBACK_SEO_PAGE_DATA: FullSEOPageData = {
     description: "SEO That Helps Your Business Get Found",
     url: "https://digitalwebstudio.in",
   },
-  siteLogo: {
-    id: 8,
-    url: "/images/logo-icon.webp",
-    altText: "DigitalWebStudio",
-    width: 220,
-    height: 60,
-    title: "DigitalWebStudio Logo",
-  },
+  siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
     email: "contact@digitalwebstudio.in",
@@ -1478,7 +1478,7 @@ export async function getSEOPageData(): Promise<FullSEOPageData> {
 
   return {
     generalSettings: data.generalSettings || FALLBACK_SEO_PAGE_DATA.generalSettings,
-    siteLogo: data.siteLogo || FALLBACK_SEO_PAGE_DATA.siteLogo,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
     globalSettings: {
       ...FALLBACK_SEO_PAGE_DATA.globalSettings!,
       ...data.globalSettings,
@@ -1506,14 +1506,7 @@ export const FALLBACK_VIBE_CODE_PAGE_DATA: FullVibeCodePageData = {
     description: "Build Digital Products Faster with AI-Assisted Development",
     url: "https://digitalwebstudio.in",
   },
-  siteLogo: {
-    id: 8,
-    url: "/images/logo-icon.webp",
-    altText: "DigitalWebStudio",
-    width: 220,
-    height: 60,
-    title: "DigitalWebStudio Logo",
-  },
+  siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
     email: "contact@digitalwebstudio.in",
@@ -1642,7 +1635,7 @@ export async function getVibeCodePageData(): Promise<FullVibeCodePageData> {
 
   return {
     generalSettings: data.generalSettings || FALLBACK_VIBE_CODE_PAGE_DATA.generalSettings,
-    siteLogo: data.siteLogo || FALLBACK_VIBE_CODE_PAGE_DATA.siteLogo,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
     globalSettings: {
       ...FALLBACK_VIBE_CODE_PAGE_DATA.globalSettings!,
       ...data.globalSettings,
@@ -1670,14 +1663,7 @@ export const FALLBACK_DIGITAL_MARKETING_PAGE_DATA: FullDigitalMarketingPageData 
     description: "Digital Marketing Built Around Growth",
     url: "https://digitalwebstudio.in",
   },
-  siteLogo: {
-    id: 8,
-    url: "/images/logo-icon.webp",
-    altText: "DigitalWebStudio",
-    width: 220,
-    height: 60,
-    title: "DigitalWebStudio Logo",
-  },
+  siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
     email: "contact@digitalwebstudio.in",
@@ -1792,7 +1778,7 @@ export async function getDigitalMarketingPageData(): Promise<FullDigitalMarketin
 
   return {
     generalSettings: data.generalSettings || FALLBACK_DIGITAL_MARKETING_PAGE_DATA.generalSettings,
-    siteLogo: data.siteLogo || FALLBACK_DIGITAL_MARKETING_PAGE_DATA.siteLogo,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
     globalSettings: {
       ...FALLBACK_DIGITAL_MARKETING_PAGE_DATA.globalSettings!,
       ...data.globalSettings,
@@ -1820,14 +1806,7 @@ export const FALLBACK_CHATBOT_PAGE_DATA: FullChatbotPageData = {
     description: "AI Chatbots That Help Your Business Respond Faster",
     url: "https://digitalwebstudio.in",
   },
-  siteLogo: {
-    id: 8,
-    url: "/images/logo-icon.webp",
-    altText: "DigitalWebStudio",
-    width: 220,
-    height: 60,
-    title: "DigitalWebStudio Logo",
-  },
+  siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
     email: "contact@digitalwebstudio.in",
@@ -1925,7 +1904,7 @@ export async function getChatbotPageData(): Promise<FullChatbotPageData> {
 
   return {
     generalSettings: data.generalSettings || FALLBACK_CHATBOT_PAGE_DATA.generalSettings,
-    siteLogo: data.siteLogo || FALLBACK_CHATBOT_PAGE_DATA.siteLogo,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
     globalSettings: {
       ...FALLBACK_CHATBOT_PAGE_DATA.globalSettings!,
       ...data.globalSettings,
@@ -1953,14 +1932,7 @@ export const FALLBACK_API_INTEGRATION_PAGE_DATA: FullAPIIntegrationPageData = {
     description: "Connect Your Business Systems",
     url: "https://digitalwebstudio.in",
   },
-  siteLogo: {
-    id: 8,
-    url: "/images/logo-icon.webp",
-    altText: "DigitalWebStudio",
-    width: 220,
-    height: 60,
-    title: "DigitalWebStudio Logo",
-  },
+  siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
     email: "contact@digitalwebstudio.in",
@@ -2060,7 +2032,7 @@ export async function getAPIIntegrationPageData(): Promise<FullAPIIntegrationPag
 
   return {
     generalSettings: data.generalSettings || FALLBACK_API_INTEGRATION_PAGE_DATA.generalSettings,
-    siteLogo: data.siteLogo || FALLBACK_API_INTEGRATION_PAGE_DATA.siteLogo,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
     globalSettings: {
       ...FALLBACK_API_INTEGRATION_PAGE_DATA.globalSettings!,
       ...data.globalSettings,
@@ -2088,14 +2060,7 @@ export const FALLBACK_CASE_STUDIES_ARCHIVE_DATA: FullCaseStudiesArchiveData = {
     description: "Work That Solves Real Problems",
     url: "https://digitalwebstudio.in",
   },
-  siteLogo: {
-    id: 8,
-    url: "/images/logo-icon.webp",
-    altText: "DigitalWebStudio",
-    width: 220,
-    height: 60,
-    title: "DigitalWebStudio Logo",
-  },
+  siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
     email: "contact@digitalwebstudio.in",
@@ -2199,7 +2164,7 @@ export async function getCaseStudiesPageData(): Promise<FullCaseStudiesArchiveDa
 
   return {
     generalSettings: data.generalSettings || FALLBACK_CASE_STUDIES_ARCHIVE_DATA.generalSettings,
-    siteLogo: data.siteLogo || FALLBACK_CASE_STUDIES_ARCHIVE_DATA.siteLogo,
+    siteLogo: sanitizeSiteLogo(data.siteLogo),
     globalSettings: {
       ...FALLBACK_CASE_STUDIES_ARCHIVE_DATA.globalSettings!,
       ...data.globalSettings,
@@ -2220,7 +2185,7 @@ export async function getSingleCaseStudyData(slug: string): Promise<FullSingleCa
 
   return {
     generalSettings: archive.generalSettings,
-    siteLogo: archive.siteLogo,
+    siteLogo: sanitizeSiteLogo(archive.siteLogo),
     globalSettings: archive.globalSettings,
     menus: archive.menus,
     caseStudy: found,
