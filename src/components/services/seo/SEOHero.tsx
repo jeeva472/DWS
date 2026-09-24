@@ -13,10 +13,10 @@ interface SEOHeroProps {
 export function SEOHero({ hero, onOpenConsultation }: SEOHeroProps) {
   const shouldReduceMotion = useReducedMotion();
   const eyebrow = hero.eyebrow || "SEARCH ENGINE OPTIMIZATION • ORGANIC GROWTH";
-  const title = hero.title || "SEO That Helps Your Business Get Found";
+  const title = hero.title || "SEO That Helps Your Business Get Found & Grow";
   const description =
     hero.description ||
-    "We combine technical SEO, on-page optimisation and search strategy to improve visibility, attract relevant visitors and build sustainable organic growth.";
+    "We don't optimize for rankings alone. We engineer technical SEO foundations and conversion architecture that optimize the complete journey from search visibility to qualified business enquiries.";
   const ctaText = hero.ctaText || "Get an SEO Audit";
 
   return (
@@ -48,8 +48,8 @@ export function SEOHero({ hero, onOpenConsultation }: SEOHeroProps) {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] font-extrabold tracking-tight text-white leading-[1.15] mb-6 max-w-2xl"
             >
-              SEO That Helps Your Business{" "}
-              <span className="text-[#9ae64c]">Get Found & Grow</span>
+              SEO Optimized for{" "}
+              <span className="text-[#9ae64c]">Rankings, Traffic &amp; Qualified Leads</span>
             </motion.h1>
 
             {/* Narrative Description */}
@@ -96,7 +96,7 @@ export function SEOHero({ hero, onOpenConsultation }: SEOHeroProps) {
             >
               <div className="flex items-center gap-2">
                 <Gauge className="w-4 h-4 text-[#9ae64c]" />
-                <span>100% Core Web Vitals Ready</span>
+                <span>Core Web Vitals Optimization</span>
               </div>
               <div className="flex items-center gap-2">
                 <Code2 className="w-4 h-4 text-[#9ae64c]" />
@@ -104,7 +104,7 @@ export function SEOHero({ hero, onOpenConsultation }: SEOHeroProps) {
               </div>
               <div className="flex items-center gap-2">
                 <LineChart className="w-4 h-4 text-[#9ae64c]" />
-                <span>Transparent Search Console Data</span>
+                <span>Search Console &amp; GA4 Telemetry</span>
               </div>
             </motion.div>
           </div>
@@ -126,7 +126,7 @@ export function SEOHero({ hero, onOpenConsultation }: SEOHeroProps) {
                   </span>
                 </div>
                 <span className="px-2.5 py-1 rounded-full bg-[#9ae64c]/10 text-[#9ae64c] border border-[#9ae64c]/30 text-[10px] font-mono">
-                  INDEXED & HEALTHY
+                  INDEXED &amp; HEALTHY
                 </span>
               </div>
 
@@ -144,7 +144,7 @@ export function SEOHero({ hero, onOpenConsultation }: SEOHeroProps) {
                 </div>
                 <div className="p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] text-center">
                   <span className="text-[10px] text-[#7d9287] font-mono uppercase block">Index Status</span>
-                  <span className="text-sm font-bold text-white font-mono">100%</span>
+                  <span className="text-sm font-bold text-white font-mono">Verified</span>
                   <span className="text-[9px] text-[#9ae64c] block">0 Errors</span>
                 </div>
               </div>
@@ -153,10 +153,10 @@ export function SEOHero({ hero, onOpenConsultation }: SEOHeroProps) {
               <div className="space-y-3">
                 <div className="flex items-center justify-between p-3 rounded-xl bg-[#080d11] border border-white/[0.06]">
                   <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-[#9ae64c] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#9ae64c]" />
                     <div>
                       <p className="text-xs font-semibold text-white">Structured Schema Markup</p>
-                      <p className="text-[10px] text-[#7d9287]">Organization, Service & FAQPage JSON-LD</p>
+                      <p className="text-[10px] text-[#7d9287]">Organization, Service &amp; FAQPage JSON-LD</p>
                     </div>
                   </div>
                   <span className="text-[10px] text-[#9ae64c] font-mono bg-[#9ae64c]/10 px-2 py-0.5 rounded border border-[#9ae64c]/20">
@@ -166,7 +166,7 @@ export function SEOHero({ hero, onOpenConsultation }: SEOHeroProps) {
 
                 <div className="flex items-center justify-between p-3 rounded-xl bg-[#080d11] border border-white/[0.06]">
                   <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-[#9ae64c] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#9ae64c]" />
                     <div>
                       <p className="text-xs font-semibold text-white">Server-Side Rendered (SSR)</p>
                       <p className="text-[10px] text-[#7d9287]">Next.js Static Generation + Dynamic Hydration</p>
@@ -179,10 +179,10 @@ export function SEOHero({ hero, onOpenConsultation }: SEOHeroProps) {
 
                 <div className="flex items-center justify-between p-3 rounded-xl bg-[#080d11] border border-white/[0.06]">
                   <div className="flex items-center gap-3">
-                    <CheckCircle2 className="w-4 h-4 text-[#9ae64c] shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#9ae64c]" />
                     <div>
                       <p className="text-xs font-semibold text-white">High-Intent Topic Clusters</p>
-                      <p className="text-[10px] text-[#7d9287]">Semantic Hierarchy & Internal Linking Matrix</p>
+                      <p className="text-[10px] text-[#7d9287]">Semantic Hierarchy &amp; Internal Linking Matrix</p>
                     </div>
                   </div>
                   <span className="text-[10px] text-[#9ae64c] font-mono bg-[#9ae64c]/10 px-2 py-0.5 rounded border border-[#9ae64c]/20">
@@ -197,7 +197,7 @@ export function SEOHero({ hero, onOpenConsultation }: SEOHeroProps) {
                   <Activity className="w-3.5 h-3.5 text-[#9ae64c]" />
                   <span>Crawl Health: Optimal</span>
                 </span>
-                <span>Audit Score: 98/100</span>
+                <span>Search Console: Connected</span>
               </div>
             </motion.div>
           </div>

@@ -13,11 +13,11 @@ interface VibeCodeHeroProps {
 export function VibeCodeHero({ hero, onOpenConsultation }: VibeCodeHeroProps) {
   const shouldReduceMotion = useReducedMotion();
   const eyebrow = hero.eyebrow || "AI-ASSISTED DEVELOPMENT • SENIOR ENGINEERING";
-  const title = hero.title || "Build Digital Products Faster with AI-Assisted Development";
+  const title = hero.title || "AI-Assisted Rapid Development";
   const description =
     hero.description ||
-    "We combine modern AI coding workflows with real engineering expertise to prototype, build and refine websites, applications and digital products faster.";
-  const ctaText = hero.ctaText || "Build an Idea";
+    "Vibe coding combines modern AI coding acceleration with experienced engineering oversight to prototype, build, and deploy production-ready web applications faster.";
+  const ctaText = hero.ctaText || "Start Your Growth Project";
 
   return (
     <section className="relative min-h-[85vh] flex flex-col justify-center pt-32 sm:pt-40 pb-20 overflow-hidden bg-[#030608]">
@@ -48,8 +48,8 @@ export function VibeCodeHero({ hero, onOpenConsultation }: VibeCodeHeroProps) {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] font-extrabold tracking-tight text-white leading-[1.15] mb-6 max-w-2xl"
             >
-              Build Digital Products Faster with{" "}
-              <span className="text-[#9ae64c]">AI-Assisted Development</span>
+              AI-Assisted Rapid Development{" "}
+              <span className="text-[#9ae64c]">Guided by Engineering</span>
             </motion.h1>
 
             {/* Narrative Description */}
@@ -96,15 +96,15 @@ export function VibeCodeHero({ hero, onOpenConsultation }: VibeCodeHeroProps) {
             >
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#9ae64c]" />
-                <span>AI Scaffolding Velocity</span>
+                <span>Rapid AI Prototyping</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-[#9ae64c]" />
-                <span>Senior Code Review</span>
+                <span>Senior Architectural Oversight</span>
               </div>
               <div className="flex items-center gap-2">
                 <Code2 className="w-4 h-4 text-[#9ae64c]" />
-                <span>Strict TypeScript Safety</span>
+                <span>Production-Ready Clean Code</span>
               </div>
             </motion.div>
           </div>
@@ -140,11 +140,11 @@ export function VibeCodeHero({ hero, onOpenConsultation }: VibeCodeHeroProps) {
                       AI Acceleration Layer
                     </span>
                     <span className="text-[10px] font-mono text-[#9ae64c] bg-[#9ae64c]/10 px-2 py-0.5 rounded">
-                      10x Speed
+                      Fast Scaffolding
                     </span>
                   </div>
                   <p className="text-xs text-[#9cb1a6] mb-3">
-                    Boilerplate scaffolding, rapid prototyping & UI component iteration.
+                    Rapid prototyping, component drafting, boilerplate generation & automated testing loops.
                   </p>
                   <div className="w-full bg-white/[0.06] h-1.5 rounded-full overflow-hidden">
                     <div className="bg-gradient-to-r from-[#b4fa6c] to-[#9ae64c] h-full w-[95%]" />
@@ -159,11 +159,11 @@ export function VibeCodeHero({ hero, onOpenConsultation }: VibeCodeHeroProps) {
                       Senior Engineering Oversight
                     </span>
                     <span className="text-[10px] font-mono text-white/80 bg-white/[0.08] px-2 py-0.5 rounded">
-                      Zero Debt
+                      Production Standards
                     </span>
                   </div>
                   <p className="text-xs text-[#9cb1a6] mb-3">
-                    System architecture, security headers, database integrity & code reviews.
+                    System architecture, security headers, database integrity, schema validation & human code review.
                   </p>
                   <div className="w-full bg-white/[0.06] h-1.5 rounded-full overflow-hidden">
                     <div className="bg-[#9ae64c] h-full w-[100%]" />
@@ -174,9 +174,9 @@ export function VibeCodeHero({ hero, onOpenConsultation }: VibeCodeHeroProps) {
                 <div className="p-3 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-center justify-between text-xs font-mono">
                   <div className="flex items-center gap-2 text-[#7d9287]">
                     <Terminal className="w-3.5 h-3.5 text-[#9ae64c]" />
-                    <span>Type Check:</span>
+                    <span>Quality Assurance:</span>
                   </div>
-                  <span className="text-[#9ae64c] font-bold">0 Errors (Strict)</span>
+                  <span className="text-[#9ae64c] font-bold">Tested & Secure</span>
                 </div>
               </div>
 
@@ -184,9 +184,9 @@ export function VibeCodeHero({ hero, onOpenConsultation }: VibeCodeHeroProps) {
               <div className="mt-5 pt-4 border-t border-white/[0.08] flex items-center justify-between text-[11px] text-[#7d9287] font-mono">
                 <span className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#9ae64c]" />
-                  <span>Next.js App Router</span>
+                  <span>Modern Web Architecture</span>
                 </span>
-                <span>Sub-second SSR</span>
+                <span>Optimized Delivery</span>
               </div>
             </motion.div>
           </div>

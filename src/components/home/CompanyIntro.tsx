@@ -17,18 +17,18 @@ export function CompanyIntro({ about, features, onOpenConsultation }: CompanyInt
   const defaultFeatures: IconItemData[] = [
     {
       icon: "code",
-      title: "Engineered by Senior Specialists",
-      text: "Every architecture is planned, written, and maintained directly by senior full-stack engineers with zero junior delegation.",
+      title: "Full Digital Foundation",
+      text: "We engineer high-performance web platforms and SEO architectures designed specifically to capture high-intent search traffic.",
     },
     {
       icon: "cpu",
-      title: "Real Business Automation",
-      text: "We design custom AI pipelines and workflow integrations that remove repetitive operational overhead and save hundreds of manual hours.",
+      title: "Connected AI & CRM Workflows",
+      text: "We build automated lead qualification pipelines and bi-directional CRM syncs that eliminate manual data entry and accelerate response times.",
     },
     {
       icon: "chart-up",
-      title: "Measurable Commercial Growth",
-      text: "Fast page speeds, high-intent technical SEO, and conversion-optimized user flows built specifically to generate qualified leads and revenue.",
+      title: "Sustainable Business Growth",
+      text: "From initial visitor discovery to closed sales and attribution analytics, we connect the entire journey into one compounding system.",
     },
   ];
 
@@ -46,17 +46,17 @@ export function CompanyIntro({ about, features, onOpenConsultation }: CompanyInt
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-[#9ae64c] tracking-wide uppercase font-mono">
               <Sparkles className="w-3.5 h-3.5 text-[#9ae64c]" />
-              <span>{about.eyebrow || "Real People • Real Engineering"}</span>
+              <span>{about.eyebrow || "Connected Growth Partner"}</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.14]">
-              Technology built around your{" "}
-              <span className="text-gradient-green">business reality.</span>
+              Websites, SEO &amp; AI Systems —{" "}
+              <span className="text-gradient-green">From Traffic to Customers.</span>
             </h2>
 
             <p className="text-base sm:text-lg text-[#9cb1a6] leading-relaxed pt-1">
               {about.description ||
-                "We are a dedicated digital studio of senior developers, system architects, and growth marketers. We do not sell generic templates or empty AI promises — we partner directly with ambitious companies to engineer robust web platforms, automate critical business workflows, and scale measurable revenue."}
+                "DigitalWebStudio does not simply provide disconnected digital services. We build and connect the digital systems required to move your business from online visibility to qualified leads and ongoing growth. No fragmented vendors, no black-box development."}
             </p>
 
             {/* Quick Value Checklist */}
@@ -65,19 +65,19 @@ export function CompanyIntro({ about, features, onOpenConsultation }: CompanyInt
                 <div className="w-5 h-5 rounded-full bg-[#9ae64c]/15 flex items-center justify-center text-[#9ae64c] shrink-0">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                 </div>
-                <span>Direct communication with your lead developer & architect</span>
+                <span>End-to-end integration: Website → Traffic → Leads → CRM → Follow-up</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-[#f5f8f6]">
                 <div className="w-5 h-5 rounded-full bg-[#9ae64c]/15 flex items-center justify-center text-[#9ae64c] shrink-0">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                 </div>
-                <span>Full source code ownership with modern Next.js & TypeScript stack</span>
+                <span>Full source code ownership &amp; clean, maintainable engineering</span>
               </div>
               <div className="flex items-center gap-3 text-sm text-[#f5f8f6]">
                 <div className="w-5 h-5 rounded-full bg-[#9ae64c]/15 flex items-center justify-center text-[#9ae64c] shrink-0">
                   <CheckCircle2 className="w-3.5 h-3.5" />
                 </div>
-                <span>Agile sprints with transparent staging deployments</span>
+                <span>Direct technical partnership with experienced senior engineers</span>
               </div>
             </div>
 
@@ -87,7 +87,7 @@ export function CompanyIntro({ about, features, onOpenConsultation }: CompanyInt
                 onClick={onOpenConsultation}
                 className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full text-xs font-bold text-[#05080a] bg-gradient-to-r from-[#b4fa6c] to-[#9ae64c] hover:shadow-[0_0_25px_rgba(154,230,76,0.5)] transition-all duration-200 cursor-pointer"
               >
-                <span>{about.btnPrimaryText || "Schedule Technical Consultation"}</span>
+                <span>{about.btnPrimaryText || "Start Your Growth Project"}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

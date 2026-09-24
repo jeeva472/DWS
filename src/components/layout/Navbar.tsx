@@ -495,7 +495,7 @@ export function Navbar({
               {globalSettings?.email && (
                 <a
                   href={`mailto:${globalSettings.email}`}
-                  onClick={() => trackEmailClick(globalSettings.email || "contact@digitalwebstudio.in")}
+                  onClick={() => trackEmailClick(globalSettings.email || "digitalwebstudioagency@gmail.com")}
                   className="flex items-center gap-3 text-sm text-[#9cb1a6] hover:text-[#9ae64c]"
                 >
                   <Mail className="w-4 h-4 text-[#9ae64c]" />

@@ -5,6 +5,7 @@ import { FullHomepageData } from "@/lib/types/wordpress";
 import { Navbar } from "@/components/layout/Navbar";
 import { Hero } from "@/components/home/Hero";
 import { CompanyIntro } from "@/components/home/CompanyIntro";
+import { DigitalGrowthSystemSection } from "@/components/home/DigitalGrowthSystemSection";
 import { ServicesMatrix } from "@/components/home/ServicesMatrix";
 import { SelectedWork } from "@/components/home/SelectedWork";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
@@ -57,7 +58,12 @@ export function HomeClientView({ data }: { data: FullHomepageData }) {
           />
         )}
 
-        {/* 3. Services & Capabilities Showcase Matrix */}
+        {/* 3. New Core Concept: Digital Growth System Section */}
+        <DigitalGrowthSystemSection
+          onOpenConsultation={(svc) => handleOpenConsultation(svc)}
+        />
+
+        {/* 4. Services & Capabilities Showcase Matrix */}
         {home?.services && home?.servicesSection && (
           <ServicesMatrix
             section={home.servicesSection}

@@ -15,11 +15,11 @@ export function AboutCTA({ cta, onOpenConsultation }: AboutCTAProps) {
   const shouldReduceMotion = useReducedMotion();
 
   const eyebrow = cta.eyebrow || "LET'S BUILD SOMETHING USEFUL";
-  const title = cta.title || "Have an idea worth building?";
+  const title = cta.title || "Ready to Build Your Digital Growth System?";
   const description =
     cta.description ||
-    "Tell us what you're working on. We'll help you turn it into a practical digital solution.";
-  const buttonText = cta.buttonText || "Start a Project";
+    "Tell us about your business goals. We'll design and connect the digital infrastructure needed to turn traffic into qualified leads and long-term customers.";
+  const buttonText = cta.buttonText || "Start Your Growth Project";
 
   return (
     <section className="py-24 relative overflow-hidden bg-[#030608]">
@@ -91,11 +91,11 @@ export function AboutCTA({ cta, onOpenConsultation }: AboutCTAProps) {
             </button>
 
             <a
-              href="mailto:contact@digitalwebstudio.in"
+              href="mailto:digitalwebstudioagency@gmail.com"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full font-semibold text-sm text-white bg-white/[0.04] border border-white/[0.14] hover:bg-white/[0.08] hover:border-[#9ae64c]/40 transition-all duration-200"
             >
               <Mail className="w-4 h-4 text-[#9ae64c]" />
-              <span>contact@digitalwebstudio.in</span>
+              <span>digitalwebstudioagency@gmail.com</span>
             </a>
           </motion.div>
         </div>

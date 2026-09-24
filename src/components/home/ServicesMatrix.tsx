@@ -44,20 +44,19 @@ export function ServicesMatrix({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="max-w-2xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-[#9ae64c] tracking-wide uppercase">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-pill text-xs font-semibold text-[#9ae64c] tracking-wide uppercase font-mono">
               <Sparkles className="w-3.5 h-3.5 text-[#9ae64c]" />
-              <span>{section.eyebrow || "Services"}</span>
+              <span>Core Capabilities &amp; Services</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-[1.1]">
-              {section.heading || "Our Solutions, Your Growth"}
+              Build the parts you need.{" "}
+              <span className="text-gradient-green">Connect the entire system.</span>
             </h2>
 
-            {section.description && (
-              <p className="text-base sm:text-lg text-[#9cb1a6] leading-relaxed">
-                {section.description}
-              </p>
-            )}
+            <p className="text-base sm:text-lg text-[#9cb1a6] leading-relaxed">
+              Every service is engineered to solve specific operational challenges independently, or connect seamlessly as a unified Digital Growth System.
+            </p>
           </div>
 
           <div>
@@ -65,7 +64,7 @@ export function ServicesMatrix({
               href="/services"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold text-[#05080a] bg-[#9ae64c] hover:bg-[#b4fa6c] hover:shadow-[0_0_20px_rgba(154,230,76,0.5)] transition-all duration-200"
             >
-              <span>Explore All Capabilities &amp; Solutions</span>
+              <span>Explore All Solutions</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>

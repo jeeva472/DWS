@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, Code2, Cpu, Sparkles, Terminal, CheckCircle2, ShieldCheck, Zap } from "lucide-react";
+import { ArrowRight, Code2, Cpu, Sparkles, Terminal, CheckCircle2, ShieldCheck, Zap, Layers, Globe } from "lucide-react";
 import Link from "next/link";
 
 interface WebDevelopmentHeroProps {
@@ -31,7 +31,7 @@ export function WebDevelopmentHero({ onOpenConsultation }: WebDevelopmentHeroPro
               className="flex items-center gap-2.5 mb-5 text-[11px] font-bold text-[#9ae64c] tracking-[0.22em] uppercase font-mono"
             >
               <span className="w-3.5 h-[2px] bg-[#9ae64c] inline-block rounded-full" />
-              <span>HIGH-PERFORMANCE ARCHITECTURE • NEXT.JS & APIS</span>
+              <span>DIGITAL INFRASTRUCTURE • WEB PLATFORMS</span>
             </motion.div>
 
             {/* Single Main H1 for SEO */}
@@ -41,8 +41,8 @@ export function WebDevelopmentHero({ onOpenConsultation }: WebDevelopmentHeroPro
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] font-extrabold tracking-tight text-white leading-[1.15] mb-6 max-w-2xl"
             >
-              Modern Web Development Built for{" "}
-              <span className="text-[#9ae64c]">Speed, Scale & Conversion</span>
+              Websites Engineered as{" "}
+              <span className="text-[#9ae64c]">Business Infrastructure</span>
             </motion.h1>
 
             {/* Narrative Description */}
@@ -52,7 +52,7 @@ export function WebDevelopmentHero({ onOpenConsultation }: WebDevelopmentHeroPro
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-base sm:text-lg text-[#9cb1a6] leading-relaxed mb-8 max-w-xl font-normal"
             >
-              We engineer custom Next.js applications, headless CMS platforms, and robust web solutions. Built with clean code, sub-second load times, and seamless API integrations that drive revenue.
+              A high-performing website is the foundation of your digital growth. We build fast, conversion-focused websites and web applications with built-in SEO architecture, seamless lead capture, and direct CRM integration.
             </motion.p>
 
             {/* Key Value Metrics Strip */}
@@ -63,27 +63,27 @@ export function WebDevelopmentHero({ onOpenConsultation }: WebDevelopmentHeroPro
               className="grid grid-cols-3 gap-3 sm:gap-6 py-4 px-5 rounded-2xl bg-white/[0.02] border border-white/[0.06] mb-8 w-full max-w-xl backdrop-blur-sm"
             >
               <div>
-                <div className="text-xl sm:text-2xl font-mono font-extrabold text-[#9ae64c]">
-                  &lt; 1.0s
+                <div className="text-sm sm:text-base font-mono font-bold text-[#9ae64c]">
+                  Optimized
                 </div>
                 <div className="text-[11px] text-[#8c9e94] font-mono mt-0.5">
-                  Core Web Vitals LCP
+                  Core Web Vitals & Speed
                 </div>
               </div>
               <div className="border-x border-white/[0.08] px-3 sm:px-4">
-                <div className="text-xl sm:text-2xl font-mono font-extrabold text-white">
-                  100%
+                <div className="text-sm sm:text-base font-mono font-bold text-white">
+                  Connected
                 </div>
                 <div className="text-[11px] text-[#8c9e94] font-mono mt-0.5">
-                  TypeScript Strict Mode
+                  SEO & Lead Capture
                 </div>
               </div>
               <div>
-                <div className="text-xl sm:text-2xl font-mono font-extrabold text-[#9ae64c]">
-                  99.9%
+                <div className="text-sm sm:text-base font-mono font-bold text-[#9ae64c]">
+                  Flexible
                 </div>
                 <div className="text-[11px] text-[#8c9e94] font-mono mt-0.5">
-                  Reliability & Uptime
+                  WordPress • Next.js • Headless
                 </div>
               </div>
             </motion.div>
@@ -100,19 +100,19 @@ export function WebDevelopmentHero({ onOpenConsultation }: WebDevelopmentHeroPro
                 onClick={onOpenConsultation}
                 className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-xs text-[#05080a] bg-gradient-to-r from-[#b4fa6c] via-[#9ae64c] to-[#78be32] hover:shadow-[0_0_25px_rgba(154,230,76,0.6)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
-                <span>Discuss Your Project</span>
+                <span>Start Your Growth Project</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
               <Link
                 href="/services"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-xs text-[#f5f8f6] bg-white/[0.04] border border-white/[0.1] hover:bg-white/[0.08] hover:border-white/[0.2] transition-all duration-200"
               >
-                <span>View All Services</span>
+                <span>Explore Solutions</span>
               </Link>
             </motion.div>
           </div>
 
-          {/* Right Column: Code Architecture Terminal Visual */}
+          {/* Right Column: Code & Architecture Visual */}
           <motion.div
             initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -129,24 +129,23 @@ export function WebDevelopmentHero({ onOpenConsultation }: WebDevelopmentHeroPro
                   <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
                   <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
                   <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
-                  <span className="text-xs font-mono text-[#8c9e94] ml-2">app/architecture/stack.config.ts</span>
+                  <span className="text-xs font-mono text-[#8c9e94] ml-2">architecture/growth-foundation.ts</span>
                 </div>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#9ae64c]/15 text-[#9ae64c] border border-[#9ae64c]/30">
-                  Production Ready
+                  Infrastructure
                 </span>
               </div>
 
-              {/* Code Snippet Block */}
+              {/* Connected Foundation Snippet */}
               <div className="space-y-3 font-mono text-xs">
-                <div className="text-[#8c9e94]">// Modern Full-Stack Stack Architecture</div>
-                <div className="p-3 rounded-xl bg-[#030608] border border-white/[0.06] text-[#c4d6cb] space-y-1.5 leading-relaxed">
-                  <div className="text-[#9ae64c] font-bold">export const stackConfig = &#123;</div>
-                  <div className="pl-4 text-white">framework: <span className="text-[#9ae64c]">&quot;Next.js 15 (App Router)&quot;</span>,</div>
-                  <div className="pl-4 text-white">language: <span className="text-[#9ae64c]">&quot;TypeScript Strict&quot;</span>,</div>
-                  <div className="pl-4 text-white">cmsLayer: <span className="text-[#9ae64c]">&quot;Headless WP + WPGraphQL&quot;</span>,</div>
-                  <div className="pl-4 text-white">styling: <span className="text-[#9ae64c]">&quot;Tailwind CSS &amp; Framer Motion&quot;</span>,</div>
-                  <div className="pl-4 text-white">performance: <span className="text-[#9ae64c]">&quot;Edge Caching + ISR (60s)&quot;</span>,</div>
-                  <div className="pl-4 text-white">seoOptimization: <span className="text-[#9ae64c]">&quot;Automated JSON-LD Schema&quot;</span>,</div>
+                <div className="text-[#8c9e94]">// Tailored to your specific business requirements</div>
+                <div className="p-3.5 rounded-xl bg-[#030608] border border-white/[0.06] text-[#c4d6cb] space-y-1.5 leading-relaxed">
+                  <div className="text-[#9ae64c] font-bold">export const digitalFoundation = &#123;</div>
+                  <div className="pl-4 text-white">platforms: <span className="text-[#9ae64c]">&quot;Next.js | React | WordPress | WooCommerce&quot;</span>,</div>
+                  <div className="pl-4 text-white">seoFoundation: <span className="text-[#9ae64c]">&quot;Structured Data + Core Web Vitals&quot;</span>,</div>
+                  <div className="pl-4 text-white">leadCapture: <span className="text-[#9ae64c]">&quot;High-Converting Forms + Smart Funnels&quot;</span>,</div>
+                  <div className="pl-4 text-white">crmIntegration: <span className="text-[#9ae64c]">&quot;Automated Webhooks &amp; API Pipeline&quot;</span>,</div>
+                  <div className="pl-4 text-white">analyticsLayer: <span className="text-[#9ae64c]">&quot;GA4 + Tag Manager Attribution&quot;</span>,</div>
                   <div className="text-[#9ae64c] font-bold">&#125;;</div>
                 </div>
 
@@ -158,7 +157,7 @@ export function WebDevelopmentHero({ onOpenConsultation }: WebDevelopmentHeroPro
                   </div>
                   <div className="p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center gap-2">
                     <Zap className="w-4 h-4 text-[#9ae64c] shrink-0" />
-                    <span className="text-[11px] text-[#c4d6cb] font-semibold">Sub-second Speed</span>
+                    <span className="text-[11px] text-[#c4d6cb] font-semibold">Conversion-Ready</span>
                   </div>
                 </div>
               </div>

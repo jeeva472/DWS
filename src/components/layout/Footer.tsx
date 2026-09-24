@@ -232,7 +232,7 @@ export function Footer({ siteLogo, globalSettings }: FooterProps) {
               {globalSettings?.email && (
                 <a
                   href={`mailto:${globalSettings.email}`}
-                  onClick={() => trackEmailClick(globalSettings.email || "contact@digitalwebstudio.in")}
+                  onClick={() => trackEmailClick(globalSettings.email || "digitalwebstudioagency@gmail.com")}
                   className="flex items-start gap-2 text-xs text-[#9cb1a6] hover:text-[#9ae64c] transition-colors truncate"
                 >
                   <Mail className="w-3.5 h-3.5 text-[#9ae64c] shrink-0 mt-0.5" />

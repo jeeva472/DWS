@@ -151,7 +151,7 @@ export function ChatbotWidget() {
         id: `assistant-${Date.now()}`,
         role: "assistant",
         content:
-          "I encountered a temporary connection issue. You can reach out directly to our engineering team at **contact@digitalwebstudio.in** or WhatsApp **+91 63830 88993**.",
+          "I encountered a temporary connection issue. You can reach out directly to our engineering team at **digitalwebstudioagency@gmail.com** or WhatsApp **+91 63830 88993**.",
         suggestedLinks: [{ label: "Contact Page", url: "/contact" }],
         showLeadForm: true,
       };

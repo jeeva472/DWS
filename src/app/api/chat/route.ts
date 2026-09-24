@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         reply:
-          "I encountered a temporary glitch while processing your request. Please try again or reach out to our team at contact@digitalwebstudio.in.",
+          "I encountered a temporary glitch while processing your request. Please try again or reach out to our team at digitalwebstudioagency@gmail.com.",
         isOutOfScope: false,
         isHighIntent: false,
       },

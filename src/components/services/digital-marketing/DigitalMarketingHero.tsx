@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ChevronDown, TrendingUp, BarChart3, Target, Users, Sparkles, CheckCircle2, DollarSign } from "lucide-react";
+import { ArrowRight, ChevronDown, BarChart3, Target, CheckCircle2, DollarSign, Filter, RefreshCw } from "lucide-react";
 import { ServicesHeroData } from "@/lib/types/wordpress";
 
 interface DigitalMarketingHeroProps {
@@ -12,12 +12,12 @@ interface DigitalMarketingHeroProps {
 
 export function DigitalMarketingHero({ hero, onOpenConsultation }: DigitalMarketingHeroProps) {
   const shouldReduceMotion = useReducedMotion();
-  const eyebrow = hero.eyebrow || "DIGITAL GROWTH • PERFORMANCE MARKETING";
-  const title = hero.title || "Digital Marketing Built Around Growth";
+  const eyebrow = hero.eyebrow || "DIGITAL GROWTH & PERFORMANCE SYSTEMS";
+  const title = hero.title || "Demand Generation & Digital Growth Systems";
   const description =
     hero.description ||
-    "We combine strategy, content, campaigns and measurement to help businesses reach the right audience and turn attention into meaningful opportunities.";
-  const ctaText = hero.ctaText || "Plan Your Growth";
+    "We connect targeted traffic, landing experiences, lead qualification, and lifecycle nurturing to turn market attention into sustainable business revenue.";
+  const ctaText = hero.ctaText || "Start Your Growth Project";
 
   return (
     <section className="relative min-h-[85vh] flex flex-col justify-center pt-32 sm:pt-40 pb-20 overflow-hidden bg-[#030608]">
@@ -49,7 +49,7 @@ export function DigitalMarketingHero({ hero, onOpenConsultation }: DigitalMarket
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] font-extrabold tracking-tight text-white leading-[1.15] mb-6 max-w-2xl"
             >
               Digital Marketing{" "}
-              <span className="text-[#9ae64c]">Built Around Growth</span>
+              <span className="text-[#9ae64c]">Engineered for Growth</span>
             </motion.h1>
 
             {/* Narrative Description */}
@@ -96,15 +96,15 @@ export function DigitalMarketingHero({ hero, onOpenConsultation }: DigitalMarket
             >
               <div className="flex items-center gap-2">
                 <Target className="w-4 h-4 text-[#9ae64c]" />
-                <span>High-Intent Audience Focus</span>
+                <span>High-Intent Audience Acquisition</span>
               </div>
               <div className="flex items-center gap-2">
                 <BarChart3 className="w-4 h-4 text-[#9ae64c]" />
-                <span>Full GA4 Attribution</span>
+                <span>Full-Funnel Analytics & Attribution</span>
               </div>
               <div className="flex items-center gap-2">
                 <DollarSign className="w-4 h-4 text-[#9ae64c]" />
-                <span>Optimized Customer Acquisition Cost</span>
+                <span>Lower CAC & Higher Conversion</span>
               </div>
             </motion.div>
           </div>
@@ -122,60 +122,71 @@ export function DigitalMarketingHero({ hero, onOpenConsultation }: DigitalMarket
                 <div className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-[#9ae64c] animate-pulse" />
                   <span className="text-xs font-mono font-bold tracking-wider uppercase text-white/90">
-                    Growth Funnel Telemetry
+                    Full-Funnel Growth Journey
                   </span>
                 </div>
                 <span className="px-2.5 py-1 rounded-full bg-[#9ae64c]/10 text-[#9ae64c] border border-[#9ae64c]/30 text-[10px] font-mono">
-                  LIVE ATTRIBUTION
+                  ACTIVE FLOW
                 </span>
               </div>
 
-              {/* Conversion Stages */}
-              <div className="space-y-3 relative">
-                <div className="p-3.5 rounded-xl bg-[#080d11] border border-white/[0.06] flex items-center justify-between">
-                  <div className="flex items-center gap-3">
+              {/* Conversion Stages: ATTRACT -> CAPTURE -> QUALIFY -> CONVERT -> RETAIN -> OPTIMIZE */}
+              <div className="space-y-2.5 relative">
+                <div className="p-3 rounded-xl bg-[#080d11] border border-white/[0.06] flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#9ae64c]" />
-                    <span className="text-xs font-bold text-white">01. Reach</span>
-                    <span className="text-[11px] text-[#7d9287]">SEO + Targeted Ads</span>
+                    <span className="text-xs font-bold text-white">01. ATTRACT</span>
+                    <span className="text-[11px] text-[#7d9287]">SEO, Paid Ads & Content</span>
                   </div>
-                  <span className="text-xs font-mono text-[#9ae64c] font-bold">100% Inflow</span>
+                  <span className="text-[11px] font-mono text-[#9ae64c] font-bold">Targeted Reach</span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-[#080d11] border border-white/[0.06] flex items-center justify-between">
-                  <div className="flex items-center gap-3">
+                <div className="p-3 rounded-xl bg-[#080d11] border border-white/[0.06] flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#9ae64c]" />
-                    <span className="text-xs font-bold text-white">02. Engage</span>
-                    <span className="text-[11px] text-[#7d9287]">High-Value Content & UX</span>
+                    <span className="text-xs font-bold text-white">02. CAPTURE</span>
+                    <span className="text-[11px] text-[#7d9287]">Landing Pages & Chatbots</span>
                   </div>
-                  <span className="text-xs font-mono text-[#9ae64c] font-bold">High Intent</span>
+                  <span className="text-[11px] font-mono text-[#9ae64c] font-bold">Lead Inflow</span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-[#9ae64c]/[0.05] border border-[#9ae64c]/30 flex items-center justify-between shadow-[0_0_20px_rgba(154,230,76,0.06)]">
-                  <div className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-[#9ae64c]" />
-                    <span className="text-xs font-bold text-[#9ae64c]">03. Convert</span>
-                    <span className="text-[11px] text-white/80">Streamlined Lead Capture</span>
+                <div className="p-3 rounded-xl bg-[#9ae64c]/[0.05] border border-[#9ae64c]/30 flex items-center justify-between shadow-[0_0_20px_rgba(154,230,76,0.06)]">
+                  <div className="flex items-center gap-2.5">
+                    <Filter className="w-3.5 h-3.5 text-[#9ae64c]" />
+                    <span className="text-xs font-bold text-[#9ae64c]">03. QUALIFY</span>
+                    <span className="text-[11px] text-white/80">AI Scoring & Intent Filter</span>
                   </div>
-                  <span className="text-xs font-mono text-[#9ae64c] font-bold">+42% CVR</span>
+                  <span className="text-[11px] font-mono text-[#9ae64c] font-bold">High Intent</span>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-[#080d11] border border-white/[0.06] flex items-center justify-between">
-                  <div className="flex items-center gap-3">
+                <div className="p-3 rounded-xl bg-[#080d11] border border-white/[0.06] flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
                     <span className="w-2 h-2 rounded-full bg-[#9ae64c]" />
-                    <span className="text-xs font-bold text-white">04. Measure</span>
-                    <span className="text-[11px] text-[#7d9287]">GA4 & Server Data Layer</span>
+                    <span className="text-xs font-bold text-white">04. CONVERT</span>
+                    <span className="text-[11px] text-[#7d9287]">Automated CRM Routing & Sales</span>
                   </div>
-                  <span className="text-xs font-mono text-white/90 font-bold">Verified ROI</span>
+                  <span className="text-[11px] font-mono text-white/90 font-bold">Sales Hand-off</span>
+                </div>
+
+                <div className="p-3 rounded-xl bg-[#080d11] border border-white/[0.06] flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-[#9ae64c]" />
+                    <span className="text-xs font-bold text-white">05. RETAIN & OPTIMIZE</span>
+                    <span className="text-[11px] text-[#7d9287]">Email Nurturing & Analytics</span>
+                  </div>
+                  <span className="text-[11px] font-mono text-[#9ae64c] font-bold">
+                    <RefreshCw className="w-3 h-3 inline mr-1" />Continuous Loop
+                  </span>
                 </div>
               </div>
 
               {/* Bottom Telemetry */}
-              <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between text-[11px] text-[#7d9287] font-mono">
+              <div className="mt-5 pt-3 border-t border-white/[0.08] flex items-center justify-between text-[11px] text-[#7d9287] font-mono">
                 <span className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#9ae64c]" />
-                  <span>UTM Tracking Active</span>
+                  <span>Integrated Data Layer</span>
                 </span>
-                <span>Zero Vanity Metrics</span>
+                <span>Attribution-Driven Growth</span>
               </div>
             </motion.div>
           </div>

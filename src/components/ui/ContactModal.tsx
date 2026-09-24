@@ -13,14 +13,14 @@ interface ContactModalProps {
 export function ContactModal({
   isOpen,
   onClose,
-  initialService = "AI Automation",
+  initialService = "Complete Digital Growth System",
 }: ContactModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     service: initialService,
-    budget: "$5k - $15k",
+    timeline: "Within 2-4 weeks",
     message: "",
   });
 
@@ -69,7 +69,7 @@ export function ContactModal({
           name: formData.name,
           email: formData.email,
           service: formData.service,
-          budget: formData.budget,
+          timeline: formData.timeline,
           message: formData.message,
           formLocation: "Contact Modal",
         }),
@@ -82,7 +82,7 @@ export function ContactModal({
 
       trackLeadSubmission({
         service: formData.service,
-        budget: formData.budget,
+        timeline: formData.timeline,
         formLocation: "Contact Modal",
       });
       setSubmitted(true);
@@ -116,9 +116,9 @@ export function ContactModal({
             <div className="w-16 h-16 rounded-full bg-[#9ae64c]/20 border border-[#9ae64c]/40 flex items-center justify-center text-[#9ae64c] mx-auto">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-bold text-white">Consultation Request Sent</h3>
+            <h3 className="text-2xl font-bold text-white">Project Inquiry Received</h3>
             <p className="text-sm text-[#9cb1a6] max-w-sm mx-auto">
-              We have received your requirements. Our lead engineer will review the details and reach out within 24 hours.
+              Thank you for reaching out. A senior solutions engineer will review your project requirements and get in touch within 2 hours.
             </p>
             <button
               type="button"
@@ -133,13 +133,13 @@ export function ContactModal({
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-pill text-[11px] font-semibold text-[#9ae64c] uppercase tracking-wider mb-2">
                 <Sparkles className="w-3 h-3 text-[#9ae64c]" />
-                <span>Direct Inquiry</span>
+                <span>Start Your Growth Project</span>
               </div>
               <h3 className="text-2xl font-extrabold text-white tracking-tight">
                 Schedule a Consultation
               </h3>
               <p className="text-xs text-[#9cb1a6]">
-                Fill out the form below to receive a custom architecture scope and estimate.
+                Share your business objectives to receive a tailored digital growth architecture scope.
               </p>
             </div>
 
@@ -175,7 +175,7 @@ export function ContactModal({
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-[#9cb1a6] mb-1.5">
-                    Service of Interest
+                    What to Improve
                   </label>
                   <select
                     value={formData.service}
@@ -184,31 +184,32 @@ export function ContactModal({
                     }
                     className="w-full px-3 py-3 rounded-xl bg-[#0f161b] border border-white/[0.08] text-white text-xs focus:border-[#9ae64c] focus:outline-none"
                   >
-                    <option value="AI Automation">AI Automation</option>
-                    <option value="SEO">SEO (Search Engine Optimization)</option>
-                    <option value="Digital Marketing">Digital Marketing &amp; Growth</option>
-                    <option value="Vibe Code Development">Vibe Code Development</option>
-                    <option value="Chatbot Development">Chatbot Development</option>
-                    <option value="API Integration">API Integration</option>
+                    <option value="Complete Digital Growth System">Digital Growth System</option>
+                    <option value="AI Automation">AI Automation &amp; CRM</option>
+                    <option value="SEO">SEO &amp; Search Traffic</option>
                     <option value="Web Development">Web Development</option>
+                    <option value="Chatbot Development">AI Chatbots</option>
+                    <option value="API Integration">API Integration</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
+                    <option value="Vibe Code Development">AI-Assisted Development</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-[#9cb1a6] mb-1.5">
-                    Estimated Budget
+                    Target Timeline
                   </label>
                   <select
-                    value={formData.budget}
+                    value={formData.timeline}
                     onChange={(e) =>
-                      setFormData({ ...formData, budget: e.target.value })
+                      setFormData({ ...formData, timeline: e.target.value })
                     }
                     className="w-full px-3 py-3 rounded-xl bg-[#0f161b] border border-white/[0.08] text-white text-xs focus:border-[#9ae64c] focus:outline-none"
                   >
-                    <option value="$2k - $5k">$2,000 - $5,000</option>
-                    <option value="$5k - $15k">$5,000 - $15,000</option>
-                    <option value="$15k - $30k">$15,000 - $30,000</option>
-                    <option value="$30k+">$30,000+</option>
+                    <option value="Immediately (1-2 weeks)">1-2 weeks</option>
+                    <option value="Within 2-4 weeks">2-4 weeks</option>
+                    <option value="1-3 months">1-3 months</option>
+                    <option value="Exploring Options">Exploring</option>
                   </select>
                 </div>
               </div>
@@ -229,28 +230,28 @@ export function ContactModal({
                 />
               </div>
 
-                {errorMessage && (
-                  <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs text-center">
-                    {errorMessage}
-                  </div>
-                )}
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-[#05080a] bg-gradient-to-r from-[#b4fa6c] via-[#9ae64c] to-[#78be32] hover:shadow-[0_0_25px_rgba(154,230,76,0.5)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  <span>{isSubmitting ? "Submitting Inquiry..." : "Request Technical Scope"}</span>
-                  <Send className={`w-3.5 h-3.5 ${isSubmitting ? "animate-pulse" : ""}`} />
-                </button>
-
-                <div className="flex items-center justify-center gap-2 text-xs text-[#8c9e94] pt-1">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#9ae64c]" />
-                  <span>NDA Protected • Zero spam policy</span>
+              {errorMessage && (
+                <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs text-center">
+                  {errorMessage}
                 </div>
-              </form>
-            </div>
-          )}
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-[#05080a] bg-gradient-to-r from-[#b4fa6c] via-[#9ae64c] to-[#78be32] hover:shadow-[0_0_25px_rgba(154,230,76,0.5)] transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                <span>{isSubmitting ? "Submitting Inquiry..." : "Start Your Growth Project"}</span>
+                <Send className={`w-3.5 h-3.5 ${isSubmitting ? "animate-pulse" : ""}`} />
+              </button>
+
+              <div className="flex items-center justify-center gap-2 text-xs text-[#8c9e94] pt-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#9ae64c]" />
+                <span>NDA Protected • Zero spam policy</span>
+              </div>
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );

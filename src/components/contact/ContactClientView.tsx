@@ -6,14 +6,13 @@ import { motion, useReducedMotion } from "framer-motion";
 import {
   Mail,
   Phone,
-  MapPin,
   Clock,
   Send,
   CheckCircle2,
   Sparkles,
-  ArrowRight,
   ShieldCheck,
-  Zap,
+  Building2,
+  Workflow,
 } from "lucide-react";
 import { FullContactPageData, FullHomepageData } from "@/lib/types/wordpress";
 import { Navbar } from "@/components/layout/Navbar";
@@ -32,7 +31,8 @@ export function ContactClientView({ data }: ContactClientViewProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    service: "AI Automation",
+    service: "Complete Digital Growth System",
+    currentStack: "",
     timeline: "Within 2-4 weeks",
     message: "",
   });
@@ -42,22 +42,22 @@ export function ContactClientView({ data }: ContactClientViewProps) {
 
   const contactData = (data.page as any)?.contactPageData;
   const hero = contactData?.hero || {
-    eyebrow: "START A CONVERSATION",
-    heading: "Let's Build, Automate &",
+    eyebrow: "START YOUR GROWTH PROJECT",
+    heading: "Build, Automate &",
     headingHighlight: "Scale Your Business",
     headingTag: "h1",
-    description: "Have a project in mind or want to explore how AI automation, modern SEO, and custom development can transform your operations? Get in touch for a senior technical consultation.",
+    description: "Ready to connect your website, search traffic, lead capture, CRM, and AI automation into one unified growth system? Get in touch for a strategic discovery session.",
   };
 
   const directInfo = contactData?.directInfo || {
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     phone: "+91 63830 88993",
     sla: "Under 2 Hours (Mon - Sat)",
   };
 
   const formSettings = contactData?.form || {
-    heading: "Project Scope & Inquiry",
-    subheading: "Fill out the details below and we'll schedule a structured technical discovery call.",
+    heading: "Start Your Growth Project",
+    subheading: "Tell us about your current setup and business goals. We'll design a connected solution tailored to your needs.",
     cf7_form_id: 7,
   };
 
@@ -76,6 +76,7 @@ export function ContactClientView({ data }: ContactClientViewProps) {
           name: formData.name,
           email: formData.email,
           service: formData.service,
+          currentStack: formData.currentStack,
           timeline: formData.timeline,
           message: formData.message,
           formLocation: "Contact Page Form",
@@ -101,6 +102,7 @@ export function ContactClientView({ data }: ContactClientViewProps) {
   };
 
   const servicesList = [
+    { label: "Digital Growth System", href: "/digital-growth-system" },
     { label: "AI Automation", href: "/services/ai-automation" },
     { label: "SEO Services", href: "/services/seo" },
     { label: "Digital Marketing", href: "/services/digital-marketing" },
@@ -198,7 +200,7 @@ export function ContactClientView({ data }: ContactClientViewProps) {
                   </div>
                   <div>
                     <div className="text-xs font-mono text-[#8c9e94] uppercase tracking-wider">
-                      Guaranteed Response SLA
+                      Standard Response SLA
                     </div>
                     <div className="text-sm font-bold text-white mt-0.5">
                       {directInfo.sla}
@@ -210,7 +212,7 @@ export function ContactClientView({ data }: ContactClientViewProps) {
               {/* Service Discovery Links */}
               <div className="pt-4 border-t border-white/[0.08]">
                 <div className="text-xs font-mono font-bold text-white uppercase tracking-wider mb-3">
-                  Explore Specialized Service Pages:
+                  Explore Capabilities &amp; Solutions:
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {servicesList.map((svc) => (
@@ -226,7 +228,7 @@ export function ContactClientView({ data }: ContactClientViewProps) {
               </div>
             </motion.div>
 
-            {/* Right Column: Interactive Form */}
+            {/* Right Column: Interactive Lead Qualification Form */}
             <motion.div
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -243,10 +245,10 @@ export function ContactClientView({ data }: ContactClientViewProps) {
                       <CheckCircle2 className="w-8 h-8" />
                     </div>
                     <h3 className="text-2xl font-extrabold text-white">
-                      Message Received!
+                      Inquiry Received!
                     </h3>
                     <p className="text-sm text-[#9cb1a6] max-w-md mx-auto leading-relaxed">
-                      Thank you for reaching out. A senior technical partner from DigitalWebStudio will review your inquiry and get back to you within 2 hours.
+                      Thank you for contacting DigitalWebStudio. Our senior solutions architect will review your project requirements and respond within 2 hours.
                     </p>
                     <button
                       type="button"
@@ -257,7 +259,7 @@ export function ContactClientView({ data }: ContactClientViewProps) {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                  <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
                     <div>
                       <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
                         {formSettings.heading}
@@ -297,24 +299,39 @@ export function ContactClientView({ data }: ContactClientViewProps) {
                       </div>
                     </div>
 
+                    {/* What are you looking to improve? (Lead Qualification Core Field) */}
+                    <div>
+                      <label className="block text-xs font-mono text-[#9cb1a6] mb-2 uppercase tracking-wider">
+                        What are you looking to improve? *
+                      </label>
+                      <select
+                        value={formData.service}
+                        onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-[#030608] border border-white/[0.1] text-sm text-white focus:border-[#9ae64c] focus:outline-none transition-colors"
+                      >
+                        <option value="Complete Digital Growth System">Complete Digital Growth System (Traffic → Leads → CRM → Growth)</option>
+                        <option value="Website & Web Platform">Website / Web Platform (Speed, Design & Conversion)</option>
+                        <option value="SEO & Organic Visibility">SEO &amp; Organic Search Visibility</option>
+                        <option value="AI Lead Automation & Follow-up">AI Lead Qualification &amp; Follow-up Automation</option>
+                        <option value="AI Chatbot & Lead Routing">AI Chatbot &amp; WhatsApp Automation</option>
+                        <option value="API Integration & CRM Sync">API Integration &amp; System Connectivity</option>
+                        <option value="Digital Marketing & Performance">Digital Marketing &amp; Demand Generation</option>
+                        <option value="AI-Assisted Rapid Development">AI-Assisted Rapid Product Development</option>
+                      </select>
+                    </div>
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-xs font-mono text-[#9cb1a6] mb-2 uppercase tracking-wider">
-                          Primary Capability Needed
+                          Current Website / CRM (Optional)
                         </label>
-                        <select
-                          value={formData.service}
-                          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-[#030608] border border-white/[0.1] text-sm text-white focus:border-[#9ae64c] focus:outline-none transition-colors"
-                        >
-                          <option value="AI Automation">AI Automation</option>
-                          <option value="SEO">SEO (Search Engine Optimization)</option>
-                          <option value="Digital Marketing">Digital Marketing &amp; Growth</option>
-                          <option value="Vibe Code Development">Vibe Code Development</option>
-                          <option value="Chatbot Development">Chatbot Development</option>
-                          <option value="API Integration">API Integration</option>
-                          <option value="Web Development">Web Development</option>
-                        </select>
+                        <input
+                          type="text"
+                          value={formData.currentStack}
+                          onChange={(e) => setFormData({ ...formData, currentStack: e.target.value })}
+                          placeholder="e.g. WordPress, HubSpot, Shopify"
+                          className="w-full px-4 py-3 rounded-xl bg-[#030608] border border-white/[0.1] text-sm text-white placeholder-[#556960] focus:border-[#9ae64c] focus:outline-none transition-colors"
+                        />
                       </div>
 
                       <div>
@@ -328,15 +345,15 @@ export function ContactClientView({ data }: ContactClientViewProps) {
                         >
                           <option value="Immediately (1-2 weeks)">Immediately (1-2 weeks)</option>
                           <option value="Within 2-4 weeks">Within 2-4 weeks</option>
-                          <option value="Next Quarter">Next Quarter</option>
-                          <option value="Exploring Options">Exploring Options</option>
+                          <option value="1-3 months">1-3 months</option>
+                          <option value="Exploring Solutions">Exploring Solutions</option>
                         </select>
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-xs font-mono text-[#9cb1a6] mb-2 uppercase tracking-wider">
-                        Project Overview &amp; Key Goals *
+                        Project Overview &amp; Primary Objectives *
                       </label>
                       <textarea
                         required
@@ -359,13 +376,13 @@ export function ContactClientView({ data }: ContactClientViewProps) {
                       disabled={isSubmitting}
                       className="w-full py-4 rounded-full font-bold text-xs text-[#05080a] bg-gradient-to-r from-[#b4fa6c] via-[#9ae64c] to-[#78be32] hover:shadow-[0_0_25px_rgba(154,230,76,0.6)] transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      <span>{isSubmitting ? "Sending Inquiry..." : "Send Project Inquiry"}</span>
+                      <span>{isSubmitting ? "Submitting..." : "Start Your Growth Project"}</span>
                       <Send className={`w-4 h-4 ${isSubmitting ? "animate-pulse" : ""}`} />
                     </button>
 
                     <div className="flex items-center justify-center gap-2 text-xs text-[#8c9e94] pt-2">
                       <ShieldCheck className="w-3.5 h-3.5 text-[#9ae64c]" />
-                      <span>Strict privacy policy • No spam • NDA protected</span>
+                      <span>Strict privacy • No spam • Senior technical review</span>
                     </div>
                   </form>
                 )}

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ChevronDown, Bot, MessageSquare, Sparkles, CheckCircle2, ShieldCheck, Clock, Zap } from "lucide-react";
+import { ArrowRight, ChevronDown, Bot, CheckCircle2, ShieldCheck, Clock, Zap, ArrowRightLeft, UserCheck } from "lucide-react";
 import { ServicesHeroData } from "@/lib/types/wordpress";
 
 interface ChatbotHeroProps {
@@ -12,12 +12,12 @@ interface ChatbotHeroProps {
 
 export function ChatbotHero({ hero, onOpenConsultation }: ChatbotHeroProps) {
   const shouldReduceMotion = useReducedMotion();
-  const eyebrow = hero.eyebrow || "AI CHATBOTS • CONVERSATIONAL SYSTEMS";
-  const title = hero.title || "AI Chatbots That Help Your Business Respond Faster";
+  const eyebrow = hero.eyebrow || "AI CHATBOTS • CONVERSATIONAL LEAD SYSTEMS";
+  const title = hero.title || "AI Chatbots That Qualify Leads & Move Sales Forward";
   const description =
     hero.description ||
-    "We build intelligent chat experiences that help businesses answer questions, capture enquiries and automate repetitive conversations.";
-  const ctaText = hero.ctaText || "Build a Chatbot";
+    "Your chatbot should not just answer questions. We build intelligent conversational agents that engage visitors 24/7, qualify purchase intent, capture structured data, and route opportunities directly into your CRM.";
+  const ctaText = hero.ctaText || "Start Your Growth Project";
 
   return (
     <section className="relative min-h-[85vh] flex flex-col justify-center pt-32 sm:pt-40 pb-20 overflow-hidden bg-[#030608]">
@@ -48,8 +48,8 @@ export function ChatbotHero({ hero, onOpenConsultation }: ChatbotHeroProps) {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] font-extrabold tracking-tight text-white leading-[1.15] mb-6 max-w-2xl"
             >
-              AI Chatbots That Help Your Business{" "}
-              <span className="text-[#9ae64c]">Respond Faster</span>
+              Conversational AI That Moves Leads Into{" "}
+              <span className="text-[#9ae64c]">Your Sales Workflow</span>
             </motion.h1>
 
             {/* Narrative Description */}
@@ -82,7 +82,7 @@ export function ChatbotHero({ hero, onOpenConsultation }: ChatbotHeroProps) {
                 href="#chatbot-use-cases"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full font-semibold text-sm text-white bg-white/[0.04] border border-white/[0.14] hover:bg-white/[0.08] hover:border-[#9ae64c]/40 transition-all duration-200"
               >
-                <span>Explore 6 Use Cases</span>
+                <span>Explore Use Cases</span>
                 <ChevronDown className="w-4 h-4 text-[#9ae64c]" />
               </a>
             </motion.div>
@@ -96,20 +96,20 @@ export function ChatbotHero({ hero, onOpenConsultation }: ChatbotHeroProps) {
             >
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-[#9ae64c]" />
-                <span>Grounded Knowledge Base (Zero Hallucinations)</span>
+                <span>Grounded Knowledge Base & Guardrails</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-[#9ae64c]" />
-                <span>24/7 Instant Response</span>
+                <span>24/7 Real-Time Lead Qualification</span>
               </div>
               <div className="flex items-center gap-2">
                 <Zap className="w-4 h-4 text-[#9ae64c]" />
-                <span>Direct CRM Sync</span>
+                <span>Direct CRM & WhatsApp Routing</span>
               </div>
             </motion.div>
           </div>
 
-          {/* Right Column: Interactive Chatbot Conversation Visual */}
+          {/* Right Column: Interactive Chatbot Conversation & Workflow Visual */}
           <div className="lg:col-span-5 relative">
             <motion.div
               initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.95 }}
@@ -118,24 +118,24 @@ export function ChatbotHero({ hero, onOpenConsultation }: ChatbotHeroProps) {
               className="relative p-6 sm:p-8 rounded-3xl bg-[#060a0d]/90 border border-white/[0.1] shadow-[0_20px_60px_rgba(0,0,0,0.7)] backdrop-blur-xl overflow-hidden"
             >
               {/* Header inside visual card */}
-              <div className="flex items-center justify-between pb-5 mb-6 border-b border-white/[0.08]">
+              <div className="flex items-center justify-between pb-5 mb-5 border-b border-white/[0.08]">
                 <div className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-[#9ae64c] animate-pulse" />
                   <span className="text-xs font-mono font-bold tracking-wider uppercase text-white/90">
-                    Grounded AI Assistant
+                    Conversational Sales Funnel
                   </span>
                 </div>
                 <span className="px-2.5 py-1 rounded-full bg-[#9ae64c]/10 text-[#9ae64c] border border-[#9ae64c]/30 text-[10px] font-mono">
-                  ONLINE 24/7
+                  CRM SYNCED
                 </span>
               </div>
 
               {/* Chat Dialogue Stream */}
-              <div className="space-y-3.5">
+              <div className="space-y-3">
                 {/* User Message */}
                 <div className="flex items-start justify-end gap-2.5">
-                  <div className="p-3 rounded-2xl rounded-tr-sm bg-white/[0.06] border border-white/[0.08] text-xs text-white max-w-[80%]">
-                    Can your automation sync our lead forms directly into HubSpot and notify our Slack channel?
+                  <div className="p-3 rounded-2xl rounded-tr-sm bg-white/[0.06] border border-white/[0.08] text-xs text-white max-w-[85%]">
+                    Can your chatbot qualify high-ticket B2B leads and schedule meetings directly on our sales calendar?
                   </div>
                 </div>
 
@@ -146,32 +146,29 @@ export function ChatbotHero({ hero, onOpenConsultation }: ChatbotHeroProps) {
                   </div>
                   <div className="p-3.5 rounded-2xl rounded-tl-sm bg-[#080d11] border border-[#9ae64c]/30 text-xs text-[#f5f8f6] max-w-[85%] shadow-[0_0_20px_rgba(154,230,76,0.06)]">
                     <p className="mb-2">
-                      Yes! We configure webhooks and n8n pipelines to validate form data, enrich company details, and push contact records into HubSpot while pinging your Slack in under 2 seconds.
+                      Absolutely. We connect your custom knowledge base to conversational qualification logic. When intent and budget match your criteria, it books a Calendly slot and syncs the transcript to HubSpot.
                     </p>
                     <div className="p-2 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-between text-[11px] font-mono text-[#9ae64c]">
-                      <span>Source: Verified Docs</span>
-                      <span>Latency: 180ms</span>
+                      <span>Lead Score: High (94/100)</span>
+                      <span>Routing: Calendar Synced</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Lead Captured Event */}
+                {/* Lead Captured & Routed Event */}
                 <div className="p-3 rounded-xl bg-[#9ae64c]/[0.05] border border-[#9ae64c]/20 flex items-center justify-between text-xs">
                   <div className="flex items-center gap-2 text-[#9ae64c]">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>Lead Identified & Qualified</span>
+                    <span>Lead Pushed to CRM + Sales Rep Alerted</span>
                   </div>
-                  <span className="font-mono text-[10px] text-[#7d9287]">HubSpot Deal Created</span>
+                  <span className="font-mono text-[10px] text-[#7d9287]">Slack Pushed</span>
                 </div>
               </div>
 
-              {/* Bottom Telemetry */}
-              <div className="mt-5 pt-4 border-t border-white/[0.08] flex items-center justify-between text-[11px] text-[#7d9287] font-mono">
-                <span className="flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#9ae64c]" />
-                  <span>RAG Vector Retrieval Active</span>
-                </span>
-                <span>Accuracy: 99.8%</span>
+              {/* Multi-step pipeline pill */}
+              <div className="mt-4 pt-3 border-t border-white/[0.08] flex items-center justify-between text-[10px] text-[#7d9287] font-mono">
+                <span>Visitor → Conversation → Qualification → CRM</span>
+                <span className="text-[#9ae64c]">Automated Flow</span>
               </div>
             </motion.div>
           </div>

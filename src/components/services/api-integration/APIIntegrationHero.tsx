@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ChevronDown, Network, Database, ShieldCheck, Zap, Layers, CheckCircle2, Lock } from "lucide-react";
+import { ArrowRight, ChevronDown, Network, Database, ShieldCheck, Zap, Layers, CheckCircle2, Lock, ArrowRightLeft } from "lucide-react";
 import { ServicesHeroData } from "@/lib/types/wordpress";
 
 interface APIIntegrationHeroProps {
@@ -12,12 +12,12 @@ interface APIIntegrationHeroProps {
 
 export function APIIntegrationHero({ hero, onOpenConsultation }: APIIntegrationHeroProps) {
   const shouldReduceMotion = useReducedMotion();
-  const eyebrow = hero.eyebrow || "SYSTEM INTEGRATION • API ARCHITECTURE";
-  const title = hero.title || "Connect Your Business Systems";
+  const eyebrow = hero.eyebrow || "BUSINESS CONNECTIVITY • API ARCHITECTURE";
+  const title = hero.title || "Connect the Tools That Run Your Business";
   const description =
     hero.description ||
-    "We integrate the platforms, APIs and tools your business relies on so data can move between systems reliably and workflows can run without unnecessary manual work.";
-  const ctaText = hero.ctaText || "Discuss an Integration";
+    "We connect your website, CRM, payment gateways, accounting systems, WhatsApp, and AI pipelines into one unified ecosystem—ensuring clean data flow and eliminating manual work.";
+  const ctaText = hero.ctaText || "Start Your Growth Project";
 
   return (
     <section className="relative min-h-[85vh] flex flex-col justify-center pt-32 sm:pt-40 pb-20 overflow-hidden bg-[#030608]">
@@ -48,8 +48,8 @@ export function APIIntegrationHero({ hero, onOpenConsultation }: APIIntegrationH
               transition={{ duration: 0.7, delay: 0.1 }}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] font-extrabold tracking-tight text-white leading-[1.15] mb-6 max-w-2xl"
             >
-              Connect Your Business Systems &{" "}
-              <span className="text-[#9ae64c]">Eliminate Data Silos</span>
+              Connect the Tools That{" "}
+              <span className="text-[#9ae64c]">Run Your Business</span>
             </motion.h1>
 
             {/* Narrative Description */}
@@ -82,7 +82,7 @@ export function APIIntegrationHero({ hero, onOpenConsultation }: APIIntegrationH
                 href="#api-capabilities"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full font-semibold text-sm text-white bg-white/[0.04] border border-white/[0.14] hover:bg-white/[0.08] hover:border-[#9ae64c]/40 transition-all duration-200"
               >
-                <span>Explore Capabilities</span>
+                <span>Explore Technical Specs</span>
                 <ChevronDown className="w-4 h-4 text-[#9ae64c]" />
               </a>
             </motion.div>
@@ -96,20 +96,20 @@ export function APIIntegrationHero({ hero, onOpenConsultation }: APIIntegrationH
             >
               <div className="flex items-center gap-2">
                 <Lock className="w-4 h-4 text-[#9ae64c]" />
-                <span>TLS/SSL End-to-End Encryption</span>
+                <span>Encrypted OAuth & Token Authentication</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-[#9ae64c]" />
-                <span>Exponential Backoff Retries</span>
+                <span>Automated Retries & Error Logging</span>
               </div>
               <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-[#9ae64c]" />
-                <span>Sub-120ms API Latency</span>
+                <ArrowRightLeft className="w-4 h-4 text-[#9ae64c]" />
+                <span>Bi-Directional Synchronizations</span>
               </div>
             </motion.div>
           </div>
 
-          {/* Right Column: Interactive API Architecture Visual */}
+          {/* Right Column: Interactive Ecosystem Integration Card */}
           <div className="lg:col-span-5 relative">
             <motion.div
               initial={shouldReduceMotion ? {} : { opacity: 0, scale: 0.95 }}
@@ -118,19 +118,19 @@ export function APIIntegrationHero({ hero, onOpenConsultation }: APIIntegrationH
               className="relative p-6 sm:p-8 rounded-3xl bg-[#060a0d]/90 border border-white/[0.1] shadow-[0_20px_60px_rgba(0,0,0,0.7)] backdrop-blur-xl overflow-hidden"
             >
               {/* Header inside visual card */}
-              <div className="flex items-center justify-between pb-5 mb-6 border-b border-white/[0.08]">
+              <div className="flex items-center justify-between pb-5 mb-5 border-b border-white/[0.08]">
                 <div className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-[#9ae64c] animate-pulse" />
                   <span className="text-xs font-mono font-bold tracking-wider uppercase text-white/90">
-                    API Gateway & Mesh
+                    Connected Business Stack
                   </span>
                 </div>
                 <span className="px-2.5 py-1 rounded-full bg-[#9ae64c]/10 text-[#9ae64c] border border-[#9ae64c]/30 text-[10px] font-mono">
-                  99.99% UPTIME
+                  UNIFIED DATA
                 </span>
               </div>
 
-              {/* Connected Nodes */}
+              {/* Connected Stack Nodes */}
               <div className="space-y-3">
                 <div className="p-3.5 rounded-xl bg-[#080d11] border border-white/[0.06] flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -138,11 +138,11 @@ export function APIIntegrationHero({ hero, onOpenConsultation }: APIIntegrationH
                       <Zap className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-white block">REST & GraphQL Gateway</span>
-                      <span className="text-[10px] text-[#7d9287]">Schema Validation + Rate Limiting</span>
+                      <span className="text-xs font-bold text-white block">Website & Landing Funnels</span>
+                      <span className="text-[10px] text-[#7d9287]">Forms, Chatbots, User Events</span>
                     </div>
                   </div>
-                  <span className="text-xs font-mono text-[#9ae64c] font-bold">45ms</span>
+                  <span className="text-[10px] font-mono text-[#9ae64c]">CAPTURE</span>
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-[#9ae64c]/[0.05] border border-[#9ae64c]/30 flex items-center justify-between shadow-[0_0_20px_rgba(154,230,76,0.06)]">
@@ -151,11 +151,11 @@ export function APIIntegrationHero({ hero, onOpenConsultation }: APIIntegrationH
                       <Database className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-[#9ae64c] block">Bi-Directional CRM Sync</span>
-                      <span className="text-[10px] text-white/80">HubSpot • Stripe • Custom SQL</span>
+                      <span className="text-xs font-bold text-[#9ae64c] block">CRM & Lead Management</span>
+                      <span className="text-[10px] text-white/80">HubSpot, Salesforce, Zoho, Custom DB</span>
                     </div>
                   </div>
-                  <span className="text-xs font-mono text-[#9ae64c] font-bold">LIVE</span>
+                  <span className="text-[10px] font-mono text-[#9ae64c] font-bold">QUALIFIED</span>
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-[#080d11] border border-white/[0.06] flex items-center justify-between">
@@ -164,21 +164,21 @@ export function APIIntegrationHero({ hero, onOpenConsultation }: APIIntegrationH
                       <Network className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-xs font-bold text-white block">Real-Time Webhooks</span>
-                      <span className="text-[10px] text-[#7d9287]">Event Signature Verification</span>
+                      <span className="text-xs font-bold text-white block">Payments, WhatsApp & ERP</span>
+                      <span className="text-[10px] text-[#7d9287]">Stripe, Razorpay, QuickBooks, Webhooks</span>
                     </div>
                   </div>
-                  <span className="text-xs font-mono text-[#7d9287]">SECURE</span>
+                  <span className="text-[10px] font-mono text-[#7d9287]">SYNCED</span>
                 </div>
               </div>
 
               {/* Bottom Telemetry */}
-              <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between text-[11px] text-[#7d9287] font-mono">
+              <div className="mt-5 pt-3 border-t border-white/[0.08] flex items-center justify-between text-[11px] text-[#7d9287] font-mono">
                 <span className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#9ae64c]" />
-                  <span>Zero Packet Loss</span>
+                  <span>Validation & Retry Protocol</span>
                 </span>
-                <span>OAuth 2.0 / JWT Auth</span>
+                <span>REST • GraphQL • Webhooks</span>
               </div>
             </motion.div>
           </div>

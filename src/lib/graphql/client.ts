@@ -105,7 +105,7 @@ export const FALLBACK_HOMEPAGE_DATA: FullHomepageData = {
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses automate, rank and scale.",
     ctaText: "Start a Project",
@@ -133,30 +133,30 @@ export const FALLBACK_HOMEPAGE_DATA: FullHomepageData = {
     slug: "home",
     uri: "/",
     seo: {
-      title: "AI Automation, SEO & Digital Growth Solutions | DigitalWebStudio",
+      title: "Websites, SEO & AI-Powered Systems | DigitalWebStudio",
       metaDesc:
-        "DigitalWebStudio helps businesses scale and operate smarter through custom AI automation workflows, technical SEO architecture, and modern digital systems.",
+        "DigitalWebStudio builds and connects modern websites, technical SEO, and AI automation systems—from traffic to leads to customers.",
       canonical: "https://digitalwebstudio.in",
-      opengraphTitle: "AI Automation, SEO & Digital Growth Solutions | DigitalWebStudio",
+      opengraphTitle: "Websites, SEO & AI-Powered Systems | DigitalWebStudio",
       opengraphDescription:
-        "DigitalWebStudio helps businesses scale and operate smarter through custom AI automation workflows, technical SEO architecture, and modern digital systems.",
+        "DigitalWebStudio builds and connects modern websites, technical SEO, and AI automation systems—from traffic to leads to customers.",
       opengraphSiteName: "DigitalWebStudio",
       opengraphType: "website",
-      twitterTitle: "AI Automation, SEO & Digital Growth Solutions | DigitalWebStudio",
+      twitterTitle: "Websites, SEO & AI-Powered Systems | DigitalWebStudio",
       twitterDescription:
-        "DigitalWebStudio helps businesses scale and operate smarter through custom AI automation workflows, technical SEO architecture, and modern digital systems.",
+        "DigitalWebStudio builds and connects modern websites, technical SEO, and AI automation systems—from traffic to leads to customers.",
     },
     homepageData: {
       hero: {
-        eyebrow: "AI AUTOMATION · SEO · DIGITAL GROWTH",
-        heading: "AI Automation and",
-        headingHighlight: "SEO Solutions for Business Growth",
+        eyebrow: "WEBSITES • SEO • AI-POWERED AUTOMATION",
+        heading: "Build Your Digital",
+        headingHighlight: "Growth System",
         headingTag: "h1",
         description:
-          "We help businesses operate smarter and scale organic revenue through custom AI automation workflows, high-performance technical SEO, and modern digital systems.",
-        btnPrimaryText: "Explore Capabilities",
+          "Attract the right visitors, capture better leads, automate what happens next, and connect your digital systems for sustainable business growth.",
+        btnPrimaryText: "Start Your Growth Project",
         btnPrimaryUrl: "#contact",
-        btnSecondaryText: "Our Services",
+        btnSecondaryText: "Explore Our Solutions",
         btnSecondaryUrl: "/services",
         visualEnabled: true,
       },
@@ -523,7 +523,7 @@ export const FALLBACK_ABOUT_PAGE_DATA: FullAboutPageData = {
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses build, automate and grow.",
     ctaText: "Start a Project",
@@ -811,7 +811,7 @@ export const FALLBACK_SERVICES_PAGE_DATA: FullServicesPageData = {
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses automate, rank and scale.",
     ctaText: "Start a Project",
@@ -1166,7 +1166,7 @@ export const FALLBACK_AI_AUTOMATION_PAGE_DATA: FullAIAutomationPageData = {
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses automate, rank and scale.",
     ctaText: "Start a Project",
@@ -1354,7 +1354,7 @@ export const FALLBACK_SEO_PAGE_DATA: FullSEOPageData = {
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses automate, rank and scale.",
     ctaText: "Start a Project",
@@ -1515,7 +1515,7 @@ export const FALLBACK_VIBE_CODE_PAGE_DATA: FullVibeCodePageData = {
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses automate, rank and scale.",
     ctaText: "Start a Project",
@@ -1672,7 +1672,7 @@ export const FALLBACK_DIGITAL_MARKETING_PAGE_DATA: FullDigitalMarketingPageData 
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses automate, rank and scale.",
     ctaText: "Start a Project",
@@ -1815,7 +1815,7 @@ export const FALLBACK_CHATBOT_PAGE_DATA: FullChatbotPageData = {
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses automate, rank and scale.",
     ctaText: "Start a Project",
@@ -1941,7 +1941,7 @@ export const FALLBACK_API_INTEGRATION_PAGE_DATA: FullAPIIntegrationPageData = {
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses automate, rank and scale.",
     ctaText: "Start a Project",
@@ -2069,7 +2069,7 @@ export const FALLBACK_WEB_DEVELOPMENT_PAGE_DATA: FullWebDevelopmentPageData = {
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses automate, rank and scale.",
     ctaText: "Start a Project",
@@ -2242,7 +2242,7 @@ export const FALLBACK_CONTACT_PAGE_DATA: FullContactPageData = {
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses automate, rank and scale.",
     ctaText: "Start a Project",
@@ -2278,7 +2278,7 @@ export const FALLBACK_CONTACT_PAGE_DATA: FullContactPageData = {
         description: "Have a project in mind or want to explore how AI automation, modern SEO, and custom development can transform your operations? Get in touch for a senior technical consultation.",
       },
       directInfo: {
-        email: "contact@digitalwebstudio.in",
+        email: "digitalwebstudioagency@gmail.com",
         phone: "+91 63830 88993",
         sla: "Under 2 Hours (Mon - Sat)",
       },
@@ -2332,7 +2332,7 @@ export const FALLBACK_CASE_STUDIES_ARCHIVE_DATA: FullCaseStudiesArchiveData = {
   siteLogo: DEFAULT_SITE_LOGO,
   globalSettings: {
     phone: "+91 63830 88993",
-    email: "contact@digitalwebstudio.in",
+    email: "digitalwebstudioagency@gmail.com",
     address: "Coimbatore, India",
     tagline: "We build digital solutions that help businesses automate, rank and scale.",
     ctaText: "Start a Project",

@@ -83,11 +83,11 @@ export function ServicesCTA({ cta, onOpenConsultation }: ServicesCTAProps) {
             </button>
 
             <a
-              href="mailto:contact@digitalwebstudio.in"
+              href="mailto:digitalwebstudioagency@gmail.com"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full font-semibold text-sm text-white bg-white/[0.04] border border-white/[0.14] hover:bg-white/[0.08] hover:border-[#9ae64c]/40 transition-all duration-200"
             >
               <Mail className="w-4 h-4 text-[#9ae64c]" />
-              <span>contact@digitalwebstudio.in</span>
+              <span>digitalwebstudioagency@gmail.com</span>
             </a>
           </motion.div>
         </div>

@@ -35,11 +35,22 @@ const iconMap: Record<string, LucideIcon> = {
 export function ServicesOverview({ intro, services }: ServicesOverviewProps) {
   const shouldReduceMotion = useReducedMotion();
 
-  const eyebrow = intro.eyebrow || "OUR CAPABILITIES";
-  const title = intro.title || "Everything you need to automate, rank and scale.";
+  const eyebrow = intro.eyebrow || "ONE CONNECTED DIGITAL GROWTH SYSTEM";
+  const title = intro.title || "From Traffic to Leads to Customers.";
   const description =
     intro.description ||
-    "We help businesses grow and operate smarter through AI automation, SEO and modern digital systems.";
+    "We don't simply offer disconnected services. We engineer and connect the digital capabilities your business needs to attract, capture, qualify, automate, and grow. Build individual components today or connect the complete system.";
+
+  const systemBadges = [
+    "Website Infrastructure",
+    "SEO & Search Traffic",
+    "Lead Capture",
+    "AI Qualification",
+    "CRM Integration",
+    "Workflow Automation",
+    "Follow-up Sequences",
+    "Attribution Analytics",
+  ];
 
   return (
     <section
@@ -51,7 +62,7 @@ export function ServicesOverview({ intro, services }: ServicesOverviewProps) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="flex items-center gap-2 mb-4 text-[11px] font-bold text-[#9ae64c] tracking-[0.2em] uppercase font-mono">
             <span className="w-3 h-[2px] bg-[#9ae64c] inline-block rounded-full" />
             <span>{eyebrow}</span>
@@ -59,9 +70,21 @@ export function ServicesOverview({ intro, services }: ServicesOverviewProps) {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-6 leading-[1.15]">
             {title}
           </h2>
-          <p className="text-base sm:text-lg text-[#9cb1a6] leading-relaxed">
+          <p className="text-base sm:text-lg text-[#9cb1a6] leading-relaxed mb-6">
             {description}
           </p>
+
+          {/* Connected System Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2 max-w-2xl">
+            {systemBadges.map((badge, bIdx) => (
+              <span
+                key={bIdx}
+                className="px-3 py-1 rounded-full text-xs font-mono bg-white/[0.04] border border-white/[0.08] text-white/90"
+              >
+                {badge}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Editorial Service List (01 to 07) */}

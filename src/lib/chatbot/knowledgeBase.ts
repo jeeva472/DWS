@@ -27,8 +27,7 @@ export const COMPANY_INFO = {
   description:
     "DigitalWebStudio architects intelligent AI automation workflows, technical SEO systems, and high-performance digital solutions that drive measurable business growth.",
   location: "Coimbatore, India (Serving clients worldwide)",
-  email: "contact@digitalwebstudio.in",
-  secondaryEmail: "jeevawebstudio@gmail.com",
+  email: "digitalwebstudioagency@gmail.com",
   phone: "+91 63830 88993",
   workingModel:
     "Worldwide remote delivery with agile weekly sprints, transparent communication, and dedicated technical leadership.",
@@ -64,8 +63,8 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
     details: [
       "Location: Coimbatore, India (working with businesses worldwide).",
       "Specialization: AI automation workflows, high-performance headless Next.js web applications, and technical SEO growth engines.",
-      "Track Record: 25+ happy customers, 50+ projects delivered, 5+ years of proven delivery.",
-      "Email: contact@digitalwebstudio.in | Phone / WhatsApp: +91 63830 88993.",
+      "Track Record: 5+ years of proven delivery, 50+ digital systems built, 100+ automated workflows.",
+      "Email: digitalwebstudioagency@gmail.com | Phone / WhatsApp: +91 63830 88993.",
     ],
     links: [
       { label: "About Us", url: "/about-us" },
@@ -443,7 +442,7 @@ export const KNOWLEDGE_BASE: KnowledgeItem[] = [
     summary:
       "Get in touch with the DigitalWebStudio engineering team for project consultations, technical audits, and custom estimates.",
     details: [
-      "Email: contact@digitalwebstudio.in (or jeevawebstudio@gmail.com)",
+      "Email: digitalwebstudioagency@gmail.com",
       "Phone / WhatsApp: +91 63830 88993",
       "Location: Coimbatore, India (Worldwide Delivery)",
       "Response Time: Within 24 hours with tailored technical proposals.",

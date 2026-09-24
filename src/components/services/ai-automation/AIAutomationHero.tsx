@@ -13,11 +13,11 @@ interface AIAutomationHeroProps {
 export function AIAutomationHero({ hero, onOpenConsultation }: AIAutomationHeroProps) {
   const shouldReduceMotion = useReducedMotion();
   const eyebrow = hero.eyebrow || "AI AUTOMATION • PROCESS OPTIMIZATION";
-  const title = hero.title || "AI Automation for Smarter, More Efficient Businesses";
+  const title = hero.title || "Turn Every Lead Into an Organized, Followed-Up Opportunity.";
   const description =
     hero.description ||
-    "We help businesses automate repetitive work, connect the tools they already use and build AI-powered workflows that save time and improve everyday operations.";
-  const ctaText = hero.ctaText || "Automate Your Workflow";
+    "We engineer autonomous workflow pipelines that connect multi-channel lead capture to instant AI qualification, CRM synchronization, team alerts, and automated follow-up sequences.";
+  const ctaText = hero.ctaText || "Automate Your Workflows";
 
   return (
     <section className="relative min-h-[85vh] flex flex-col justify-center pt-32 sm:pt-40 pb-20 overflow-hidden bg-[#030608]">
@@ -41,15 +41,15 @@ export function AIAutomationHero({ hero, onOpenConsultation }: AIAutomationHeroP
               <span>{eyebrow}</span>
             </motion.div>
 
-            {/* Single Main H1 for SEO & Page Identity */}
+            {/* Single Main H1 */}
             <motion.h1
               initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[52px] font-extrabold tracking-tight text-white leading-[1.15] mb-6 max-w-2xl"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[50px] font-extrabold tracking-tight text-white leading-[1.15] mb-6 max-w-2xl"
             >
-              AI Automation for{" "}
-              <span className="text-[#9ae64c]">Smarter, More Efficient</span> Businesses
+              Turn Every Lead Into an{" "}
+              <span className="text-[#9ae64c]">Organized, Followed-Up</span> Opportunity.
             </motion.h1>
 
             {/* Narrative Description */}
@@ -96,7 +96,7 @@ export function AIAutomationHero({ hero, onOpenConsultation }: AIAutomationHeroP
             >
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-[#9ae64c]" />
-                <span>Enterprise API Security</span>
+                <span>Validation &amp; Error Logging</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-[#9ae64c]" />
@@ -104,7 +104,7 @@ export function AIAutomationHero({ hero, onOpenConsultation }: AIAutomationHeroP
               </div>
               <div className="flex items-center gap-2">
                 <Zap className="w-4 h-4 text-[#9ae64c]" />
-                <span>Zero Data Loss Protocol</span>
+                <span>HubSpot, Salesforce &amp; Zoho Sync</span>
               </div>
             </motion.div>
           </div>
@@ -122,7 +122,7 @@ export function AIAutomationHero({ hero, onOpenConsultation }: AIAutomationHeroP
                 <div className="flex items-center gap-3">
                   <div className="w-3 h-3 rounded-full bg-[#9ae64c] animate-pulse" />
                   <span className="text-xs font-mono font-bold tracking-wider uppercase text-white/90">
-                    Live Workflow Orchestration
+                    Lead Pipeline Architecture
                   </span>
                 </div>
                 <span className="px-2.5 py-1 rounded-full bg-[#9ae64c]/10 text-[#9ae64c] border border-[#9ae64c]/30 text-[10px] font-mono">
@@ -135,17 +135,17 @@ export function AIAutomationHero({ hero, onOpenConsultation }: AIAutomationHeroP
                 {/* Connecting glowing pulse line */}
                 <div className="absolute left-[23px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-[#9ae64c]/40 via-[#9ae64c]/80 to-[#9ae64c]/30" />
 
-                {/* Node 1: Trigger Event */}
+                {/* Node 1: Lead Capture */}
                 <div className="relative flex items-center gap-4 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#9ae64c]/40 transition-colors group">
                   <div className="relative z-10 w-9 h-9 rounded-lg bg-[#0a1215] border border-[#9ae64c]/50 flex items-center justify-center text-[#9ae64c] shadow-[0_0_15px_rgba(154,230,76,0.2)]">
                     <Zap className="w-4 h-4" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-white">Event Trigger</span>
-                      <span className="text-[10px] text-[#7d9287] font-mono">0.02s</span>
+                      <span className="text-xs font-semibold text-white">01 / Lead Capture &amp; Webhook</span>
+                      <span className="text-[10px] text-[#7d9287] font-mono">Instant Ingest</span>
                     </div>
-                    <p className="text-[11px] text-[#9cb1a6] truncate">New Web Form / API Webhook Received</p>
+                    <p className="text-[11px] text-[#9cb1a6] truncate">Forms, AI Chatbots, WhatsApp &amp; Inbound Inquiries</p>
                   </div>
                 </div>
 
@@ -156,52 +156,52 @@ export function AIAutomationHero({ hero, onOpenConsultation }: AIAutomationHeroP
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-[#9ae64c]">AI Intelligence Layer</span>
-                      <span className="text-[10px] text-[#9ae64c] font-mono">LLM Schema</span>
+                      <span className="text-xs font-bold text-[#9ae64c]">02 / AI Qualification &amp; Scoring</span>
+                      <span className="text-[10px] text-[#9ae64c] font-mono">LLM Processing</span>
                     </div>
-                    <p className="text-[11px] text-white/90 truncate">Intent Extraction & Entity Classification</p>
+                    <p className="text-[11px] text-white/90 truncate">Intent Extraction, Spam Filter &amp; Priority Score</p>
                   </div>
                 </div>
 
-                {/* Node 3: Decision & Routing Logic */}
-                <div className="relative flex items-center gap-4 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#9ae64c]/40 transition-colors group">
-                  <div className="relative z-10 w-9 h-9 rounded-lg bg-[#0a1215] border border-[#9ae64c]/50 flex items-center justify-center text-[#9ae64c] shadow-[0_0_15px_rgba(154,230,76,0.2)]">
-                    <Workflow className="w-4 h-4" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-white">Branching Logic</span>
-                      <span className="text-[10px] text-[#7d9287] font-mono">Deterministic</span>
-                    </div>
-                    <p className="text-[11px] text-[#9cb1a6] truncate">Lead Scoring & Priority Routing Rules</p>
-                  </div>
-                </div>
-
-                {/* Node 4: Target System Action */}
+                {/* Node 3: CRM Synchronization */}
                 <div className="relative flex items-center gap-4 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#9ae64c]/40 transition-colors group">
                   <div className="relative z-10 w-9 h-9 rounded-lg bg-[#0a1215] border border-[#9ae64c]/50 flex items-center justify-center text-[#9ae64c] shadow-[0_0_15px_rgba(154,230,76,0.2)]">
                     <Database className="w-4 h-4" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-white">Target Ecosystem</span>
-                      <span className="text-[10px] text-[#7d9287] font-mono">Bi-directional</span>
+                      <span className="text-xs font-semibold text-white">03 / CRM Pipeline Sync</span>
+                      <span className="text-[10px] text-[#7d9287] font-mono">Auto-Create</span>
                     </div>
-                    <p className="text-[11px] text-[#9cb1a6] truncate">HubSpot CRM + Slack Alert + Email Queue</p>
+                    <p className="text-[11px] text-[#9cb1a6] truncate">HubSpot, Salesforce, Zoho Contacts &amp; Deals</p>
                   </div>
                 </div>
 
-                {/* Node 5: Success & Verification */}
+                {/* Node 4: Team Notification */}
+                <div className="relative flex items-center gap-4 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#9ae64c]/40 transition-colors group">
+                  <div className="relative z-10 w-9 h-9 rounded-lg bg-[#0a1215] border border-[#9ae64c]/50 flex items-center justify-center text-[#9ae64c] shadow-[0_0_15px_rgba(154,230,76,0.2)]">
+                    <Workflow className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-semibold text-white">04 / Team Routing &amp; Alerts</span>
+                      <span className="text-[10px] text-[#7d9287] font-mono">Real-Time</span>
+                    </div>
+                    <p className="text-[11px] text-[#9cb1a6] truncate">Contextual Slack, Teams &amp; WhatsApp Notifications</p>
+                  </div>
+                </div>
+
+                {/* Node 5: Automated Follow-Up */}
                 <div className="relative flex items-center gap-4 p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#9ae64c]/40 transition-colors group">
                   <div className="relative z-10 w-9 h-9 rounded-lg bg-[#0a1215] border border-[#9ae64c]/50 flex items-center justify-center text-[#9ae64c] shadow-[0_0_15px_rgba(154,230,76,0.2)]">
                     <CheckCircle2 className="w-4 h-4 text-[#9ae64c]" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold text-white">Outcome</span>
-                      <span className="text-[10px] text-[#9ae64c] font-mono">100% Synced</span>
+                      <span className="text-xs font-semibold text-white">05 / Automated Follow-Up</span>
+                      <span className="text-[10px] text-[#9ae64c] font-mono">Engaged</span>
                     </div>
-                    <p className="text-[11px] text-[#9cb1a6] truncate">Zero Manual Effort • Log Verified</p>
+                    <p className="text-[11px] text-[#9cb1a6] truncate">Instant Email &amp; WhatsApp Nurture Sequences</p>
                   </div>
                 </div>
               </div>
@@ -210,9 +210,9 @@ export function AIAutomationHero({ hero, onOpenConsultation }: AIAutomationHeroP
               <div className="mt-6 pt-4 border-t border-white/[0.08] flex items-center justify-between text-[11px] text-[#7d9287] font-mono">
                 <span className="flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#9ae64c]" />
-                  Self-healing Retries
+                  Validation &amp; Error Logging
                 </span>
-                <span>Latency: 280ms avg</span>
+                <span>n8n • Make • REST APIs</span>
               </div>
             </motion.div>
           </div>

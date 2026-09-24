@@ -3,9 +3,10 @@
 import React, { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  Eye,
-  Target,
+  Search,
+  Compass,
   Code2,
+  Network,
   Rocket,
   TrendingUp,
   Sparkles,
@@ -18,65 +19,64 @@ interface AboutApproachProps {
 }
 
 const iconMap: Record<string, LucideIcon> = {
-  eye: Eye,
-  target: Target,
-  code: Code2,
-  rocket: Rocket,
-  "chart-up": TrendingUp,
-  sparkles: Sparkles,
+  discover: Search,
+  strategy: Compass,
+  build: Code2,
+  connect: Network,
+  launch: Rocket,
+  grow: TrendingUp,
 };
 
 export function AboutApproach({ approach }: AboutApproachProps) {
   const shouldReduceMotion = useReducedMotion();
   const [activeStep, setActiveStep] = useState<number>(0);
 
-  const eyebrow = approach.eyebrow || "OUR APPROACH";
-  const title = approach.title || "From idea to impact.";
+  const eyebrow = approach.eyebrow || "OUR 6-STAGE DELIVERY FRAMEWORK";
+  const title = approach.title || "How We Build & Scale Connected Digital Systems";
   const description =
     approach.description ||
-    "A practical, five-stage methodology built for precision, performance, and measurable growth.";
+    "A disciplined, six-stage methodology engineered to connect your website, search visibility, lead qualification, and CRM automation into one coherent growth engine.";
 
   const defaultSteps = [
     {
       number: "01",
-      title: "Understand",
-      description: "We start by understanding your business, audience and goals.",
-      icon: "eye",
+      title: "Discover",
+      description: "We audit your existing tech stack, traffic channels, customer journey, and growth bottlenecks.",
+      icon: "discover",
     },
     {
       number: "02",
-      title: "Plan",
-      description:
-        "We turn those goals into a clear digital strategy and practical roadmap.",
-      icon: "target",
+      title: "Strategy",
+      description: "We design the architecture blueprint connecting your website, SEO plan, qualification logic, and CRM.",
+      icon: "strategy",
     },
     {
       number: "03",
       title: "Build",
-      description:
-        "We design and develop reliable digital experiences around your requirements.",
-      icon: "code",
+      description: "We develop fast web interfaces, landing pages, and AI-assisted components built for conversion.",
+      icon: "build",
     },
     {
       number: "04",
-      title: "Launch",
-      description:
-        "We test, refine and launch with performance and usability in mind.",
-      icon: "rocket",
+      title: "Connect",
+      description: "We wire up webhooks, API pipelines, CRM data layers, and automated lead routing workflows.",
+      icon: "connect",
     },
     {
       number: "05",
+      title: "Launch",
+      description: "We test all forms, chatbots, analytics tracking, and failover retries before safe deployment.",
+      icon: "launch",
+    },
+    {
+      number: "06",
       title: "Grow",
-      description:
-        "We continue improving your digital presence as your business evolves.",
-      icon: "chart-up",
+      description: "We monitor performance, optimize conversion rates, and continuously expand organic SEO traffic.",
+      icon: "grow",
     },
   ];
 
-  const steps =
-    approach.steps && approach.steps.length >= 5
-      ? approach.steps
-      : defaultSteps;
+  const steps = defaultSteps;
 
   return (
     <section className="py-24 relative overflow-hidden bg-[#030608]">
@@ -98,131 +98,67 @@ export function AboutApproach({ approach }: AboutApproachProps) {
           </p>
         </div>
 
-        {/* ================================================================= */}
-        {/* Process Roadmap Pipeline with Animated SVG Connecting Path         */}
-        {/* ================================================================= */}
-        <div className="relative">
-          {/* Desktop Connecting SVG Pipeline (Hidden on mobile) */}
-          <div className="hidden lg:block absolute top-[44px] left-[5%] right-[5%] h-8 pointer-events-none z-0">
-            <svg
-              className="w-full h-full overflow-visible"
-              viewBox="0 0 1000 32"
-              fill="none"
-              preserveAspectRatio="none"
-            >
-              <defs>
-                <filter id="approachGlow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="3" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                <path id="approachTrack" d="M 0 16 L 1000 16" />
-              </defs>
+        {/* 6 Process Steps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+          {steps.map((step, idx) => {
+            const IconComp = iconMap[step.icon] || Sparkles;
+            const isSelected = activeStep === idx;
 
-              {/* Base Track Line */}
-              <line
-                x1="0"
-                y1="16"
-                x2="1000"
-                y2="16"
-                stroke="#ffffff"
-                strokeOpacity="0.12"
-                strokeWidth="2"
-                strokeDasharray="4 6"
-              />
-
-              {/* Glowing Active Track */}
-              <line
-                x1="0"
-                y1="16"
-                x2="1000"
-                y2="16"
-                stroke="#9ae64c"
-                strokeOpacity="0.3"
-                strokeWidth="2"
-              />
-
-              {/* Traveling Subtle Green Light Along Connecting Line */}
-              {!shouldReduceMotion && (
-                <g filter="url(#approachGlow)">
-                  <circle r="4" fill="#9ae64c">
-                    <animateMotion
-                      dur="8s"
-                      repeatCount="indefinite"
-                      rotate="auto"
-                    >
-                      <mpath href="#approachTrack" />
-                    </animateMotion>
-                  </circle>
-                </g>
-              )}
-            </svg>
-          </div>
-
-          {/* 5 Process Steps Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 lg:gap-5 relative z-10">
-            {steps.map((step, idx) => {
-              const IconComp = iconMap[step.icon] || Sparkles;
-              const isSelected = activeStep === idx;
-
-              return (
-                <motion.div
-                  key={step.number || idx}
-                  initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  onMouseEnter={() => setActiveStep(idx)}
-                  className={`group relative p-6 rounded-2xl transition-all duration-300 flex flex-col items-start text-left cursor-default ${
-                    isSelected
-                      ? "bg-[#060e08]/90 border border-[#9ae64c]/60 shadow-[0_8px_30px_rgba(154,230,76,0.15)]"
-                      : "bg-[#05080a]/80 border border-white/[0.08] hover:border-white/[0.2] shadow-lg"
-                  }`}
-                >
-                  {/* Step Milestone Node */}
-                  <div className="flex items-center justify-between w-full mb-6">
-                    <div
-                      className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-300 ${
-                        isSelected
-                          ? "bg-[#9ae64c] text-[#05080a] shadow-[0_0_20px_rgba(154,230,76,0.5)]"
-                          : "bg-[#030608] border border-white/[0.14] text-[#9ae64c] group-hover:border-[#9ae64c]/50"
-                      }`}
-                    >
-                      <IconComp className="w-5 h-5" />
-                    </div>
-
-                    {/* Step Number Badge */}
-                    <span
-                      className={`font-mono text-xs font-bold px-2.5 py-1 rounded-md transition-colors duration-300 ${
-                        isSelected
-                          ? "bg-[#9ae64c]/20 text-[#9ae64c] border border-[#9ae64c]/40"
-                          : "bg-white/[0.04] text-white/50 border border-white/[0.08]"
-                      }`}
-                    >
-                      {step.number}
-                    </span>
+            return (
+              <motion.div
+                key={step.number || idx}
+                initial={shouldReduceMotion ? {} : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                onMouseEnter={() => setActiveStep(idx)}
+                className={`group relative p-6 rounded-2xl transition-all duration-300 flex flex-col items-start text-left cursor-default ${
+                  isSelected
+                    ? "bg-[#060e08]/90 border border-[#9ae64c]/60 shadow-[0_8px_30px_rgba(154,230,76,0.15)]"
+                    : "bg-[#05080a]/80 border border-white/[0.08] hover:border-white/[0.2] shadow-lg"
+                }`}
+              >
+                {/* Step Milestone Node */}
+                <div className="flex items-center justify-between w-full mb-6">
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-300 ${
+                      isSelected
+                        ? "bg-[#9ae64c] text-[#05080a] shadow-[0_0_20px_rgba(154,230,76,0.5)]"
+                        : "bg-[#030608] border border-white/[0.14] text-[#9ae64c] group-hover:border-[#9ae64c]/50"
+                    }`}
+                  >
+                    <IconComp className="w-5 h-5" />
                   </div>
 
-                  {/* Title & Description */}
-                  <h3 className="text-lg font-bold text-white mb-2.5 tracking-tight group-hover:text-[#9ae64c] transition-colors duration-200">
-                    {step.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#8c9e94] leading-relaxed">
-                    {step.description}
-                  </p>
-
-                  {/* Bottom Accent Glow Line */}
-                  <div
-                    className={`mt-4 w-full h-[2px] rounded-full transition-opacity duration-300 ${
-                      isSelected ? "bg-[#9ae64c] opacity-100" : "bg-white/[0.08] opacity-40 group-hover:opacity-80"
+                  {/* Step Number Badge */}
+                  <span
+                    className={`font-mono text-xs font-bold px-2.5 py-1 rounded-md transition-colors duration-300 ${
+                      isSelected
+                        ? "bg-[#9ae64c]/20 text-[#9ae64c] border border-[#9ae64c]/40"
+                        : "bg-white/[0.04] text-white/50 border border-white/[0.08]"
                     }`}
-                  />
-                </motion.div>
-              );
-            })}
-          </div>
+                  >
+                    {step.number}
+                  </span>
+                </div>
+
+                {/* Title & Description */}
+                <h3 className="text-lg font-bold text-white mb-2.5 tracking-tight group-hover:text-[#9ae64c] transition-colors duration-200">
+                  {step.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-[#8c9e94] leading-relaxed">
+                  {step.description}
+                </p>
+
+                {/* Bottom Accent Glow Line */}
+                <div
+                  className={`mt-4 w-full h-[2px] rounded-full transition-opacity duration-300 ${
+                    isSelected ? "bg-[#9ae64c] opacity-100" : "bg-white/[0.08] opacity-40 group-hover:opacity-80"
+                  }`}
+                />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

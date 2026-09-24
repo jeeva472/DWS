@@ -21,29 +21,29 @@ interface HeroProps {
 
 export function Hero({ hero, benefits, onOpenConsultation }: HeroProps) {
   // Eyebrow text formatting reflecting core business positioning
-  const eyebrow = hero.eyebrow || "AI AUTOMATION · SEO · DIGITAL GROWTH";
+  const eyebrow = hero.eyebrow || "WEBSITES · SEO · AI-POWERED SYSTEMS";
 
-  // Key agency metrics for the bottom glass bar
+  // Standardized agency metrics for the bottom glass bar
   const defaultStats = [
     {
       icon: Rocket,
       value: "5+",
-      label: "Years Experience",
-    },
-    {
-      icon: Users,
-      value: "25+",
-      label: "Happy Customers",
+      label: "Years of Proven Delivery",
     },
     {
       icon: CheckCircle2,
       value: "50+",
-      label: "Projects Completed",
+      label: "Digital Systems Built",
+    },
+    {
+      icon: Users,
+      value: "100+",
+      label: "Automated Workflows",
     },
   ];
 
   const handleConsultationClick = () => {
-    trackPrimaryCTA("Book a Consultation", "Hero Section");
+    trackPrimaryCTA("Start Your Growth Project", "Hero Section");
     if (onOpenConsultation) {
       onOpenConsultation();
     } else {
@@ -75,7 +75,7 @@ export function Hero({ hero, benefits, onOpenConsultation }: HeroProps) {
               <span>{eyebrow}</span>
             </motion.div>
 
-            {/* Main Headline in Exactly 3 Balanced Lines */}
+            {/* Main Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -83,27 +83,23 @@ export function Hero({ hero, benefits, onOpenConsultation }: HeroProps) {
               className="text-4xl sm:text-5xl md:text-5xl lg:text-[45px] xl:text-[52px] font-extrabold tracking-tight text-white leading-[1.12] mb-6 max-w-xl lg:max-w-[580px] xl:max-w-[620px]"
             >
               <span className="block whitespace-normal lg:whitespace-nowrap">
-                AI Automation and
-              </span>
-              <span className="block whitespace-normal lg:whitespace-nowrap">
-                SEO Solutions for
+                Build Your
               </span>
               <span className="text-[#9ae64c] block">
-                Business Growth
+                Digital Growth System.
               </span>
             </motion.h1>
 
             {/* Supporting Description */}
-            {hero.description && (
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
-                className="text-base sm:text-lg text-[#9cb1a6] leading-relaxed mb-8 max-w-lg"
-              >
-                {hero.description}
-              </motion.p>
-            )}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-base sm:text-lg text-[#9cb1a6] leading-relaxed mb-8 max-w-lg"
+            >
+              {hero.description ||
+                "Attract the right visitors, capture better leads, automate what happens next, and connect your digital systems for sustainable growth."}
+            </motion.p>
 
             {/* Dual CTAs */}
             <motion.div
@@ -118,17 +114,17 @@ export function Hero({ hero, benefits, onOpenConsultation }: HeroProps) {
                 onClick={handleConsultationClick}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full font-bold text-sm text-[#05080a] bg-gradient-to-r from-[#b4fa6c] via-[#9ae64c] to-[#78be32] hover:shadow-[0_0_30px_rgba(154,230,76,0.6)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
               >
-                <span>{hero.btnPrimaryText || "Explore Capabilities"}</span>
+                <span>{hero.btnPrimaryText || "Start Your Growth Project"}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
 
               {/* Secondary Translucent CTA */}
               <a
-                href={hero.btnSecondaryUrl || "/services"}
-                onClick={() => trackCTAClick(hero.btnSecondaryText || "Explore Services", hero.btnSecondaryUrl || "/services", "Hero Secondary")}
+                href={hero.btnSecondaryUrl || "#growth-system"}
+                onClick={() => trackCTAClick(hero.btnSecondaryText || "Explore Our Solutions", hero.btnSecondaryUrl || "#growth-system", "Hero Secondary")}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full font-semibold text-sm text-white bg-white/[0.04] border border-white/[0.14] hover:bg-white/[0.08] hover:border-[#9ae64c]/40 transition-all duration-200"
               >
-                <span>{hero.btnSecondaryText || "Explore Services"}</span>
+                <span>{hero.btnSecondaryText || "Explore Our Solutions"}</span>
                 <ArrowRight className="w-4 h-4 text-[#9ae64c]" />
               </a>
             </motion.div>

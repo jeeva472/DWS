@@ -38,8 +38,8 @@ export async function POST(req: NextRequest) {
     const smtpSecure = process.env.SMTP_SECURE === "true";
     const smtpUser = process.env.SMTP_USER;
     const smtpPass = process.env.SMTP_PASS;
-    const smtpFrom = process.env.SMTP_FROM || smtpUser || "contact@digitalwebstudio.in";
-    const rawToEmails = process.env.CONTACT_TO_EMAIL || "contact@digitalwebstudio.in, jeevawebstudio@gmail.com";
+    const smtpFrom = process.env.SMTP_FROM || smtpUser || "digitalwebstudioagency@gmail.com";
+    const rawToEmails = process.env.CONTACT_TO_EMAIL || "digitalwebstudioagency@gmail.com";
     const toEmail = rawToEmails
       .split(",")
       .map((e) => e.trim())
