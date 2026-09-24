@@ -2,12 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Rocket,
-  Users,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { HeroSectionData, IconItemData } from "@/lib/types/wordpress";
 import { IconRenderer } from "../ui/IconRenderer";
 import { HeroServicesOrbit } from "./HeroServicesOrbit";
@@ -22,25 +17,6 @@ interface HeroProps {
 export function Hero({ hero, benefits, onOpenConsultation }: HeroProps) {
   // Eyebrow text formatting reflecting core business positioning
   const eyebrow = hero.eyebrow || "WEBSITES · SEO · AI-POWERED SYSTEMS";
-
-  // Standardized agency metrics for the bottom glass bar
-  const defaultStats = [
-    {
-      icon: Rocket,
-      value: "5+",
-      label: "Years of Proven Delivery",
-    },
-    {
-      icon: CheckCircle2,
-      value: "50+",
-      label: "Digital Systems Built",
-    },
-    {
-      icon: Users,
-      value: "100+",
-      label: "Automated Workflows",
-    },
-  ];
 
   const handleConsultationClick = () => {
     trackPrimaryCTA("Start Your Growth Project", "Hero Section");
@@ -137,39 +113,6 @@ export function Hero({ hero, benefits, onOpenConsultation }: HeroProps) {
             <HeroServicesOrbit />
           </div>
         </div>
-
-        {/* =================================================================== */}
-        {/* Bottom Floating Glass Stats Banner                                  */}
-        {/* =================================================================== */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-6 pt-2"
-        >
-          <div className="w-full rounded-2xl glass-card border border-white/[0.08] p-4 sm:p-5 shadow-2xl backdrop-blur-xl">
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 divide-y sm:divide-y-0 sm:divide-x divide-white/[0.08]">
-              {defaultStats.map((s, idx) => (
-                <div
-                  key={idx}
-                  className={`flex items-center gap-3.5 ${
-                    idx > 0 ? "pt-3 sm:pt-0 sm:pl-6" : ""
-                  }`}
-                >
-                  <div className="w-10 h-10 rounded-xl bg-[#9ae64c]/10 border border-[#9ae64c]/20 flex items-center justify-center text-[#9ae64c] shrink-0">
-                    <s.icon className="w-5 h-5 text-[#9ae64c]" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-white font-bold text-base sm:text-lg tracking-tight">
-                      {s.value}
-                    </span>
-                    <span className="text-xs text-white/50">{s.label}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
